@@ -50,6 +50,6 @@ gulp.task('serve', function() {
     server: './dist'
   });
   gulp.watch('./src/styles/**/*.scss', ['sass']);
-  gulp.watch('./src/*.html', ['html']);
+  gulp.watch('./src/**/*.html', ['html']);
   gulp.watch('./src/scripts/**/*.js', ['browserify']);
 });

@@ -1,1 +1,3 @@
-console.log('init');
+var intro = require('./intro.js');
+
+intro();
