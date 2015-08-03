@@ -1,0 +1,18 @@
+{
+  "name": "jsoccer",
+  "version": "0.01",
+  "authors": [
+    "Damian Prus <prus.damian@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5"
+  }
+}
