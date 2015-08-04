@@ -12,15 +12,16 @@ function handler(e) {
 				select.overlay.classList.add('overlay-hide');
 			},
 			duration: 300
-		});	
+		});
 		e.target.classList.add('ramjet-hidden');
-		select.userTeam.classList.add('ramjet-hidden');		
+		select.userTeam.classList.add('ramjet-hidden');
 		select.overlay.removeEventListener('click', handler);
 	}
 }
 
 function init() {
-  select.overlay.addEventListener('click', handler);  
+  teams.prepareTeams();
+  select.overlay.addEventListener('click', handler);
 }
 
 module.exports = init;

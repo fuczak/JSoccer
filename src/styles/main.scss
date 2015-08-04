@@ -29,7 +29,7 @@ h1 {
 
 .overlay {
 	position: absolute;
-	overflow-y: scroll; 
+	overflow-y: scroll;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -51,20 +51,19 @@ h1 {
 	position: fixed;
 	transform: translate(0, -100%);
 }
+
 .ramjet-hidden {
 	opacity: 1;
 }
-.score-tab {
-	position: fixed;
-	width: 100%;
-	background-color: $brand-primary;
-	transition: 300ms all linear;
-	z-index: 1;
-}
+
 .flag {
-	background: #fff;
-	@include box_shadow;
-	background-size: 100% 100%;
-	margin: 20px auto;
-	padding: 0px;
+  @include box_shadow;
+  padding: 5px;
+  background-color: #fff;
+  margin: 20px 5px;
+  display: inline-block;
+}
+
+.flag-img {
+  margin: 0 auto;
 }

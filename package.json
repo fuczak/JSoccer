@@ -12,6 +12,7 @@
     "browser-sync": "^2.8.2",
     "browserify": "^11.0.1",
     "gulp": "^3.9.0",
+    "gulp-imagemin": "^2.3.0",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-useref": "^1.2.0",

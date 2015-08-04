@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     assign = require('lodash.assign'),
+    imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync');
 
 var customOpts = {
@@ -45,7 +46,13 @@ gulp.task('browserify', function () {
   .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('serve', ['html', 'sass', 'browserify'], function() {
+gulp.task('images', function() {
+  gulp.src('./src/images/flags/*.png')
+  .pipe(imagemin())
+  .pipe(gulp.dest('./tmp/images/flags'));
+});
+
+gulp.task('serve', ['html', 'sass', 'browserify', 'images'], function() {
   browserSync({
     server: './tmp'
   });
