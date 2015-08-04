@@ -28,12 +28,16 @@ h1 {
 // SECTIONS
 
 .overlay {
-	position: fixed;
-	min-height: 100%;
+	position: absolute;
+	overflow-y: scroll; 
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	width: 100%;
 	padding: 50px;
 	background-color: $brand-success;
-	transition: 250ms all ease-in-out;
+	transition: 600ms all ease-in-out;
 	z-index: 2;
 	h1, p {
 		@include box_shadow;
@@ -44,6 +48,7 @@ h1 {
 }
 
 .overlay-hide {
+	position: fixed;
 	transform: translate(0, -100%);
 }
 .ramjet-hidden {
