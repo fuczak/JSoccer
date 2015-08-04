@@ -16,6 +16,7 @@
 
 html, body {
 	height: 100%;
+	overflow: hidden;
 }
 
 // TYPOGRAPHY
@@ -27,12 +28,13 @@ h1 {
 // SECTIONS
 
 .overlay {
-	height: 100%;
+	position: fixed;
+	min-height: 100%;
 	width: 100%;
 	padding: 50px;
 	background-color: $brand-success;
 	transition: 250ms all ease-in-out;
-	overflow: hidden;
+	z-index: 2;
 	h1, p {
 		@include box_shadow;
 		padding: 10px;
@@ -42,16 +44,17 @@ h1 {
 }
 
 .overlay-hide {
-	transform: translate(0, calc(-100% + 100px));
+	transform: translate(0, -100%);
 }
 .ramjet-hidden {
-	opacity: 0;
+	opacity: 1;
 }
 .score-tab {
-	position: absolute;
-	bottom: 20px;
-	display: inline;
-	width: 20%;
+	position: fixed;
+	width: 100%;
+	background-color: $brand-primary;
+	transition: 300ms all linear;
+	z-index: 1;
 }
 .flag {
 	background: #fff;
