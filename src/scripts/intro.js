@@ -14,9 +14,9 @@ function handler(e) {
 			duration: 250
 		});	
 		e.target.classList.add('ramjet-hidden');
-		select.userTeam.classList.add('ramjet-hidden');
+		select.userTeam.classList.add('ramjet-hidden');		
+		select.overlay.removeEventListener('click', handler);
 	}
-	select.overlay.removeEventListener('click', handler);
 }
 
 function init() {
