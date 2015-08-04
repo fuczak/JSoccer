@@ -3,26 +3,42 @@ var select = require('./selectors');
 var ramjet = require('ramjet');
 
 function handler(e) {
+
+	// Set target correctly even if user clicks on flag
+	var target;
 	if (e.target.classList.contains('flag')) {
-		console.log(e);
-		select.userTeam.classList.remove('ramjet-hidden');
-		select.userTeam.innerHTML = e.target.innerHTML;
-		select.cpuTeam.innerHTML = e.target.nextSibling.innerHTML;
-		ramjet.transform(e.target, select.userTeam, {
-			done: function() {
-				select.userTeam.classList.remove('ramjet-hidden');
-				select.overlay.classList.add('overlay-hide');
-			},
-			duration: 300
-		});
-		e.target.classList.add('ramjet-hidden');
-		select.userTeam.classList.add('ramjet-hidden');
-		select.overlay.removeEventListener('click', handler);
+		target = e.target;
+	} else if (e.target.classList.contains('flag-img')) {
+		target = e.target.parentNode;
+	} else {
+		return;
 	}
+
+	// Set user team and paint it to scoreboard
+	teams.setPlayerTeam(target.textContent);
+	select.userTeam.innerHTML = target.innerHTML;
+
+	// Set CPU team and paint it to scoreboard
+	// select.cpuTeam.innerHTML = e.target.nextSibling.innerHTML;
+
+	// Ramjet transformation
+	select.userTeam.classList.remove('ramjet-hidden');
+	ramjet.transform(target, select.userTeam, {
+		done: function() {
+			select.userTeam.classList.remove('ramjet-hidden');
+			select.overlay.classList.add('overlay-hide');
+		},
+		duration: 300
+	});
+	target.classList.add('ramjet-hidden');
+	select.userTeam.classList.add('ramjet-hidden');
+
+	// Event listener is no longer needed after setup
+	select.overlay.removeEventListener('click', handler);
 }
 
 function init() {
-  teams.prepareTeams();
+  teams.prepare();
   select.overlay.addEventListener('click', handler);
 }
 

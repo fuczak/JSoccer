@@ -1,10 +1,16 @@
 var select = require('./selectors');
+var playerTeam;
+var cpuTeam;
 
 var teams = {
-  prepareTeams: prepareTeams
+  prepare: prepare,
+  setPlayerTeam: setPlayerTeam,
+  getPlayerTeam: getPlayerTeam,
+  setCpuTeam: setCpuTeam,
+  getCpuTeam: getCpuTeam
 };
 
-function prepareTeams() {
+function prepare() {
   teamlist.forEach(function(e) {
     var node = document.createElement('div');
     var image = document.createElement('img');
@@ -16,6 +22,24 @@ function prepareTeams() {
     node.appendChild(text);
     select.teamlist.appendChild(node);
   });
+}
+
+function setPlayerTeam(e) {
+  var index = teamlist.map(function(e) { return e.id; }).indexOf(e);
+  playerTeam = teamlist[index];
+  console.log(playerTeam);
+}
+
+function getPlayerTeam() {
+  return playerTeam;
+}
+
+function setCpuTeam() {
+  // todo
+}
+
+function getCpuTeam() {
+  // todo
 }
 
 var teamlist = [

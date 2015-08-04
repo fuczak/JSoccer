@@ -17,6 +17,7 @@
 html, body {
 	height: 100%;
 	overflow: hidden;
+  background-color: $brand-info;
 }
 
 // TYPOGRAPHY
@@ -69,6 +70,7 @@ h1 {
 }
 
 header {
+  @include box_shadow;
   background-color: $brand-success;
 }
 
