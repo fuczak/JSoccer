@@ -23,14 +23,14 @@ gulp.task('sass', function () {
     outputStyle: 'compressed',
     includePaths: './bower_components/bootstrap-sass/assets/stylesheets'
   }).on('error', sass.logError))
-  .pipe(gulp.dest('./dist/styles'))
+  .pipe(gulp.dest('./tmp/styles'))
   .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('html', function () {
   gulp.src('./src/*.html')
   .pipe(useref())
-  .pipe(gulp.dest('./dist'))
+  .pipe(gulp.dest('./tmp'))
   .pipe(browserSync.reload({stream: true}));
 });
 
@@ -41,13 +41,13 @@ gulp.task('browserify', function () {
   .pipe(buffer())
   .pipe(sourcemaps.init({loadMaps: true}))
   .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest('./dist/scripts'))
+  .pipe(gulp.dest('./tmp/scripts'))
   .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', ['html', 'sass', 'browserify'], function() {
   browserSync({
-    server: './dist'
+    server: './tmp'
   });
   gulp.watch('./src/styles/**/*.scss', ['sass']);
   gulp.watch('./src/**/*.html', ['html']);
