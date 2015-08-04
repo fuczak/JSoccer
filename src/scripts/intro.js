@@ -4,8 +4,10 @@ var ramjet = require('ramjet');
 
 function handler(e) {
 	if (e.target.classList.contains('flag')) {
+		console.log(e);
 		select.userTeam.classList.remove('ramjet-hidden');
 		select.userTeam.innerHTML = e.target.innerHTML;
+		select.cpuTeam.innerHTML = e.target.nextSibling.innerHTML;
 		ramjet.transform(e.target, select.userTeam, {
 			done: function() {
 				select.userTeam.classList.remove('ramjet-hidden');

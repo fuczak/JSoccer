@@ -67,3 +67,26 @@ h1 {
 .flag-img {
   margin: 0 auto;
 }
+
+header {
+  background-color: $brand-success;
+}
+
+.score-tab {
+  @include box_shadow;
+  margin: 10px;
+  display: inline-block;
+  background-color: #fff;
+  padding: 5px;
+  height: 100px
+}
+
+.score-board {
+  overflow: hidden;
+  padding: 5px;
+  display: inline-block;
+}
+
+.score {
+  margin: 0 10px;
+}
