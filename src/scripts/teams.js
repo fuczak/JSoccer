@@ -1,4 +1,5 @@
 var select = require('./selectors');
+var helpers = require('./helpers');
 var playerTeam;
 var cpuTeam;
 
@@ -12,22 +13,13 @@ var teams = {
 
 function prepare() {
   teamlist.forEach(function(e) {
-    var node = document.createElement('div');
-    var image = document.createElement('img');
-    var text = document.createTextNode(e.id);
-    image.src = 'images/flags/' + e.name + '.png';
-    image.classList.add('img-responsive', 'flag-img');
-    node.classList.add('flag', 'text-center', 'col-xs-3', 'col-md-1');
-    node.appendChild(image);
-    node.appendChild(text);
-    select.teamlist.appendChild(node);
+    select.teamlist.appendChild(paintNode(e));
   });
 }
 
 function setPlayerTeam(e) {
   var index = teamlist.map(function(e) { return e.id; }).indexOf(e);
   playerTeam = teamlist[index];
-  console.log(playerTeam);
 }
 
 function getPlayerTeam() {
@@ -35,11 +27,29 @@ function getPlayerTeam() {
 }
 
 function setCpuTeam() {
-  // todo
+  var index = helpers.random(0, teamlist.length - 1);
+  if (index === teamlist.indexOf(getPlayerTeam())) {
+    return setCpuTeam();
+  } else {
+    cpuTeam = teamlist[index];
+    return paintNode(cpuTeam);
+  }
 }
 
 function getCpuTeam() {
-  // todo
+  return cpuTeam;
+}
+
+function paintNode(e) {
+  var node = document.createElement('div');
+  var image = document.createElement('img');
+  var text = document.createTextNode(e.id);
+  image.src = 'images/flags/' + e.name + '.png';
+  image.classList.add('img-responsive', 'flag-img');
+  node.classList.add('flag', 'text-center', 'col-xs-3', 'col-md-1');
+  node.appendChild(image);
+  node.appendChild(text);
+  return node;
 }
 
 var teamlist = [
