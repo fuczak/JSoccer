@@ -1,11 +1,11 @@
 var teams = require('./teams')
 
 function init() {
-  var playerTeamSelect = document.getElementById('player-team-select');
-  var cpuTeamSelect = document.getElementById('cpu-team-select');
+  var overlay = document.getElementsByClassName('overlay')[0];
 
-  playerTeamSelect.options[0] = new Option('Text 1', 'value 1');
-
+  overlay.addEventListener('click', function(e) {
+  	this.classList.toggle('overlay-hide');
+  });
 }
 
 module.exports = init;

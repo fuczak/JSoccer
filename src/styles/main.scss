@@ -1,1 +1,46 @@
-@import "bootstrap"
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+@import "bootstrap";
+
+// VARIABLES
+
+@mixin box_shadow {
+	box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+// GENERAL STYLES
+
+* {
+	font-family: 'Poiret One', 'serif';
+	font-size: 26px;
+}
+
+html, body {
+	height: 100%;
+}
+
+// TYPOGRAPHY
+
+h1 {
+	font-size: 2em;
+}
+
+// SECTIONS
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	padding: 50px;
+	background-color: $brand-success;
+	transition: 250ms all ease-in-out;
+	overflow: hidden;
+	h1, p {
+		@include box_shadow;
+		padding: 10px;
+		background-color: #fff;
+		display: inline-block;
+	}
+}
+
+.overlay-hide {
+	transform: translate(0, -90%);
+}
