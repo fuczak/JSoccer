@@ -21,6 +21,10 @@ $brand-info: #A0CFD3;
 	transition: 150ms all ease-in-out;
 }
 
+@mixin transition_delayed {
+	transition: 300ms all 250ms ease-in-out;
+}
+
 // GENERAL STYLES
 
 * {
@@ -91,7 +95,7 @@ h1 {
 // Scoreboard
 header {
   @include box_shadow;
-  background-color: $brand-success;  
+  background-color: $brand-success;
   position: relative;
   z-index: 90;
 }
@@ -132,7 +136,7 @@ header {
 		color: #000;
 	}
 }
-.tactic-setup-hide {
+.tactic-hide {
 	transform: translate(0, -100%);
 }
 .btn-tactic {
@@ -144,4 +148,12 @@ header {
 		color: #fff;
 		font-size: 1.2em;
 	}
+}
+
+// Tactic options
+.tactic-options {
+	@include box_shadow;
+	@include transition_delayed;
+	background-color: darken($brand-success, 10%);
+	z-index: 70;
 }

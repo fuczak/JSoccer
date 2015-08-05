@@ -1,4 +1,6 @@
 var teams = require('./teams');
+var player = require('./player');
+var cpu = require('./cpu');
 var $ = require('jquery');
 
 function setTeams(e) {
@@ -23,10 +25,10 @@ function setTactics(e) {
 	e.preventDefault();
 	var formation = $('#formation').find('.active').children()[0].value;
 	var mentality = $('#mentality').find('.active').children()[0].value;
-
-	console.log(formation, mentality);
-
-	$('#tacticSetup').addClass('tactic-setup-hide');
+	player.setTactics(formation, mentality);
+	cpu.setTactics(formation, mentality);
+	$('#tacticSetup').addClass('tactic-hide');
+	$('#tacticOptions').removeClass('tactic-hide');
 }
 
 function init() {
