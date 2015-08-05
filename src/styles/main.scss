@@ -122,7 +122,7 @@ header {
 	background-color: darken($brand-success, 10%);
 	color: #fff;
 	position: absolute;
-	overflow-y: scroll;
+	overflow-y: auto;
 	top: 120px;
 	right: 0;
 	bottom: 0;
@@ -142,5 +142,5 @@ header {
 	border: none;
 	background-color: #fff;
 	color: #000;
-	margin: 5px;
+	font-size: 1.1em;
 }
