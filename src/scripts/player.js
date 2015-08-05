@@ -16,7 +16,7 @@ function getTeam() {
 
 function setTactics(formation, mentality) {
   // Affect the team skill levels
-  console.log(team);
+  // console.log(team);
 }
 
 module.exports = player;
