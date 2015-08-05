@@ -55,7 +55,7 @@ h1 {
 .overlay {
 	@include transition;
 	position: absolute;
-	overflow-y: scroll;
+	overflow-y: auto;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -133,7 +133,7 @@ header {
 	}
 }
 .tactic-setup-hide {
-	transform: translate(0, calc(-100% + 50px));
+	transform: translate(0, -100%);
 }
 .btn-tactic {
 	@include box_shadow;
