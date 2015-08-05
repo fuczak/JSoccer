@@ -17,6 +17,10 @@ $brand-info: #A0CFD3;
 	transition: 300ms all ease-in-out;
 }
 
+@mixin transition_short {
+	transition: 150ms all ease-in-out;
+}
+
 // GENERAL STYLES
 
 * {
@@ -117,7 +121,12 @@ header {
 	@include transition;
 	background-color: darken($brand-success, 10%);
 	color: #fff;
-	position: relative;
+	position: absolute;
+	overflow-y: scroll;
+	top: 120px;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	z-index: 80;
 	.panel-body {
 		color: #000;
@@ -125,4 +134,13 @@ header {
 }
 .tactic-setup-hide {
 	transform: translate(0, calc(-100% + 50px));
+}
+.btn-tactic {
+	@include box_shadow;
+	@include transition_short;
+	border-radius: 0;
+	border: none;
+	background-color: #fff;
+	color: #000;
+	margin: 5px;
 }
