@@ -2,12 +2,6 @@
 window.jQuery = require('jquery');
 require('bootstrap-sass');
 
-var intro = require('./intro.js');
-var select = require('./selectors');
-intro();
+var setup = require('./setup.js');
 
-
-select.confirmTactic.addEventListener('click', function(e) {
-	e.preventDefault();
-	select.tacticSetup.classList.add('tactic-setup-hide');
-});
+setup();

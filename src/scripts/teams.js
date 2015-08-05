@@ -1,5 +1,5 @@
-var select = require('./selectors');
 var helpers = require('./helpers');
+var $ = require('jquery');
 var playerTeam;
 var cpuTeam;
 
@@ -13,7 +13,7 @@ var teams = {
 
 function prepare() {
   teamlist.forEach(function(e) {
-    select.teamlist.appendChild(paintNode(e));
+    $('#teamlist').append(paintNode(e));
   });
 }
 
@@ -32,7 +32,7 @@ function setCpuTeam() {
     return setCpuTeam();
   } else {
     cpuTeam = teamlist[index];
-    return paintNode(cpuTeam);
+    return paintNode(cpuTeam).innerHTML;
   }
 }
 

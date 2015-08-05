@@ -14,12 +14,12 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <section class="overlay">
+    <section class="overlay" id="overlay">
       <h1>Welcome to JSoccer</h1>
       <br>
       <p>Pick your team and let's play some soccer.</p>
       <div class="container-fluid">
-        <div class="row teamlist">
+        <div class="row teamlist" id="teamlist">
           <!-- <div class="col-xs-2 flag text-center">
             <img src="images/flags/Germany.png" alt="" class="img-responsive flag-img">
             <span>Poland</span>
@@ -29,13 +29,13 @@
     <header class="text-center">
       <div class="score-tab">
         <div class="score-board">
-          <div class="text-center ramjet-hidden" id="userTeam" style="float: left">
+          <div class="text-center" id="userTeam" style="float: left">
           </div>
           <span id="userScore" class="well score" style="float: right">0</span>
         </div>
         <div class="score-board">
           <span id="cpuScore" class="well score" style="float: left">0</span>
-          <div class="text-center ramjet-hidden" id="cpuTeam" style="float: right">
+          <div class="text-center" id="cpuTeam" style="float: right">
           </div>
         </div>
       </div>
@@ -51,15 +51,15 @@
                 <div class="col-md-6">
                   <div class="panel panel-info">
                     <div class="panel-heading">
-                      <h2>Formation</h2> 
+                      <h2>Formation</h2>
                     </div>
                     <div class="panel-body">
-                      <div class="btn-group" data-toggle="buttons">
+                      <div class="btn-group" data-toggle="buttons" id="formation">
                         <label class="btn btn-lg btn-info btn-tactic active">
-                          <input type="radio" name="options" id="option1" autocomplete="off" checked> 5-3-2
+                          <input type="radio" checked value=0> 5-3-2
                         </label>
                         <label class="btn btn-lg btn-info btn-tactic">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> 4-4-2
+                          <input type="radio" value=1> 4-4-2
                         </label>
                         <label class="btn btn-lg btn-info btn-tactic">
                           <input type="radio" name="options" id="option3" autocomplete="off"> 4-3-3
@@ -70,14 +70,14 @@
                         <label class="btn btn-lg btn-info btn-tactic">
                           <input type="radio" name="options" id="option3" autocomplete="off"> 3-4-3
                         </label>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="panel panel-info">
                     <div class="panel-heading">
-                      <h2>Mentality</h2> 
+                      <h2>Mentality</h2>
                     </div>
                     <div class="panel-body">
                       <div class="btn-group" data-toggle="buttons">
@@ -90,17 +90,17 @@
                         <label class="btn btn-lg btn-info btn-tactic">
                           <input type="radio" name="options" id="option3" autocomplete="off"> Attacking
                         </label>
-                      </div>  
+                      </div>
                     </div>
                   </div>
-                </div>                      
-              </div>  
+                </div>
+              </div>
               <div class="row">
                 <div class="col-xs-12">
                   <button type="submit" class="btn btn-danger btn-tactic btn-lg btn-block" id="confirmTactic">Confirm tactic</button>
-                </div>  
-              </div>            
-            </form>          
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
