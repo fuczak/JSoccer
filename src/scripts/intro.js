@@ -21,18 +21,6 @@ function handler(e) {
 	// Set CPU team and paint it to scoreboard
 	select.cpuTeam.innerHTML = teams.setCpuTeam().innerHTML;
 
-	// Ramjet transformation
-	// select.userTeam.classList.remove('ramjet-hidden');
-	// ramjet.transform(target, select.userTeam, {
-	// 	done: function() {
-	// 		select.userTeam.classList.remove('ramjet-hidden');
-	// 		select.overlay.classList.add('overlay-hide');
-	// 	},
-	// 	duration: 300
-	// });
-	// target.classList.add('ramjet-hidden');
-	// select.userTeam.classList.add('ramjet-hidden');
-
 	// Move overlay out of the way
 	select.overlay.classList.add('overlay-hide');
 

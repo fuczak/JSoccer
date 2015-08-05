@@ -1,10 +1,20 @@
+// VARIABLES
+
+$brand-success: #4F9D69;
+$brand-primary: #62929E;
+$brand-info: #A0CFD3;
+
 @import url(http://fonts.googleapis.com/css?family=Poiret+One);
 @import "bootstrap";
 
-// VARIABLES
+// MIXINS
 
 @mixin box_shadow {
 	box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+@mixin transition {
+	transition: 300ms all ease-in-out;
 }
 
 // GENERAL STYLES
@@ -17,7 +27,16 @@
 html, body {
 	height: 100%;
 	overflow: hidden;
-  background-color: $brand-info;
+	background-color: $brand-info;
+}
+
+.ramjet-hidden {
+	opacity: 1;
+}
+
+.panel {
+	@include box_shadow;
+	border-radius: 0;
 }
 
 // TYPOGRAPHY
@@ -27,8 +46,10 @@ h1 {
 }
 
 // SECTIONS
+// Overlay
 
 .overlay {
+	@include transition;
 	position: absolute;
 	overflow-y: scroll;
 	top: 0;
@@ -38,8 +59,7 @@ h1 {
 	width: 100%;
 	padding: 50px;
 	background-color: $brand-success;
-	transition: 600ms all ease-in-out;
-	z-index: 2;
+	z-index: 100;
 	h1, p {
 		@include box_shadow;
 		padding: 10px;
@@ -52,11 +72,7 @@ h1 {
 	position: fixed;
 	transform: translate(0, -100%);
 }
-
-.ramjet-hidden {
-	opacity: 1;
-}
-
+// Flags
 .flag {
   @include box_shadow;
   padding: 5px;
@@ -68,10 +84,12 @@ h1 {
 .flag-img {
   margin: 0 auto;
 }
-
+// Scoreboard
 header {
   @include box_shadow;
-  background-color: $brand-success;
+  background-color: $brand-success;  
+  position: relative;
+  z-index: 90;
 }
 
 .score-tab {
@@ -80,7 +98,7 @@ header {
   display: inline-block;
   background-color: #fff;
   padding: 5px;
-  height: 100px
+  height: 100px;
 }
 
 .score-board {
@@ -91,4 +109,20 @@ header {
 
 .score {
   margin: 0 10px;
+}
+
+// Tactic setup
+.tactic-setup {
+	@include box_shadow;
+	@include transition;
+	background-color: darken($brand-success, 10%);
+	color: #fff;
+	position: relative;
+	z-index: 80;
+	.panel-body {
+		color: #000;
+	}
+}
+.tactic-setup-hide {
+	transform: translate(0, calc(-100% + 50px));
 }
