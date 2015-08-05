@@ -4,7 +4,7 @@ $brand-success: #4F9D69;
 $brand-primary: #62929E;
 $brand-info: #A0CFD3;
 
-@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+@import url(http://fonts.googleapis.com/css?family=Laila);
 @import "bootstrap";
 
 // MIXINS
@@ -24,7 +24,7 @@ $brand-info: #A0CFD3;
 // GENERAL STYLES
 
 * {
-	font-family: 'Poiret One', 'serif';
+	font-family: 'Laila', 'serif';
 	font-size: 26px;
 }
 
@@ -136,13 +136,11 @@ header {
 	transform: translate(0, -100%);
 }
 .btn-tactic {
-	@include box_shadow;
 	@include transition_short;
 	border-radius: 0;
-	border: none;
-	background-color: #fff;
 	color: #000;
 	&.btn-block {
+		color: #fff;
 		font-size: 1.2em;
 	}
 }
