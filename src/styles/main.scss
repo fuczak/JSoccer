@@ -142,5 +142,7 @@ header {
 	border: none;
 	background-color: #fff;
 	color: #000;
-	font-size: 1.1em;
+	&.btn-block {
+		font-size: 1.2em;
+	}
 }
