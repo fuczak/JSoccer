@@ -1,5 +1,7 @@
 var helpers = require('./helpers');
 var $ = require('jquery');
+var player = require('./player');
+var cpu = require('./cpu');
 var playerTeam;
 var cpuTeam;
 
@@ -20,6 +22,7 @@ function prepare() {
 function setPlayerTeam(e) {
   var index = teamlist.map(function(e) { return e.id; }).indexOf(e);
   playerTeam = teamlist[index];
+  player.setTeam(playerTeam);
 }
 
 function getPlayerTeam() {
@@ -32,6 +35,7 @@ function setCpuTeam() {
     return setCpuTeam();
   } else {
     cpuTeam = teamlist[index];
+    cpu.setTeam(cpuTeam);
     return paintNode(cpuTeam).innerHTML;
   }
 }

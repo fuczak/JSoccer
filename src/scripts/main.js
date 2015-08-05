@@ -1,7 +1,8 @@
 // Workaround to make bootstrap js work correctly
-window.jQuery = require('jquery');
+var $ = window.jQuery = require('jquery');
 require('bootstrap-sass');
-
 var setup = require('./setup.js');
 
-setup();
+$(document).ready(function() {
+	setup();
+});

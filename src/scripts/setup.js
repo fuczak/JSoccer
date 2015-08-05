@@ -1,10 +1,13 @@
 var teams = require('./teams');
 var $ = require('jquery');
-var ramjet = require('ramjet');
 
-function handler(e) {
+function setTeams(e) {
 	// Set target correctly even if user clicks on flag
 	var target = e.target.closest('.flag');
+
+	// Return if target is not a team card
+	if (target === null) return;
+
 	// Set user team and paint it to scoreboard
 	teams.setPlayerTeam(target.textContent);
 	$('#userTeam').append(target.innerHTML);
@@ -14,12 +17,22 @@ function handler(e) {
 
 	// Move overlay out of the way
 	$('#overlay').addClass('overlay-hide');
+}
 
+function setTactics(e) {
+	e.preventDefault();
+	var formation = $('#formation').find('.active').children()[0].value;
+	var mentality = $('#mentality').find('.active').children()[0].value;
+
+	console.log(formation, mentality);
+
+	$('#tacticSetup').addClass('tactic-setup-hide');
 }
 
 function init() {
   teams.prepare();
-  $('#overlay').on('click', handler);
+  $('#overlay').on('click', setTeams);
+	$('#confirmTactic').on('click', setTactics);
 }
 
 module.exports = init;
