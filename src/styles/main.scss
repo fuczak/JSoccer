@@ -162,13 +162,19 @@ header {
 	height: 80px;
 	z-index: 70;
 }
+.info-section {
+	&.commentary {
+		background-color: #fff;
+		height: 80px;
+	}
+}
 
 // Pitch
 .pitch {
 	color: #fff;
 	position: absolute;
 	overflow-y: auto;
-	top: 205px;
+	top: 200px;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -179,7 +185,7 @@ header {
 	background-color: #fff;
 	height: 100px;
 	text-align: center;
-	margin: 5px 0;
+	margin: 1px 0;
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
 	}

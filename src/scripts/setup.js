@@ -29,7 +29,7 @@ function setTactics(e) {
 	player.setTactics(formation, mentality);
 	cpu.setTactics(formation, mentality);
 	$('#tacticSetup').addClass('tactic-hide');
-	$('#tacticOptions').removeClass('tactic-hide');
+	$('#infoBar').removeClass('tactic-hide');
 }
 
 function init() {
