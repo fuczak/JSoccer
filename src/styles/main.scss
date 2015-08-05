@@ -22,7 +22,7 @@ $brand-info: #A0CFD3;
 }
 
 @mixin transition_delayed {
-	transition: 300ms all 250ms ease-in-out;
+	transition: 300ms all 150ms ease-in-out;
 }
 
 // GENERAL STYLES
@@ -87,6 +87,9 @@ h1 {
   background-color: #fff;
   margin: 20px 0px;
   display: inline-block;
+	&:nth-child(2n) {
+		background-color: darken(#fff, 2%);
+	}
 }
 
 .flag-img {
@@ -147,6 +150,7 @@ header {
 		@include box_shadow;
 		color: #fff;
 		font-size: 1.2em;
+		margin-bottom: 40px;
 	}
 }
 
@@ -155,5 +159,37 @@ header {
 	@include box_shadow;
 	@include transition_delayed;
 	background-color: darken($brand-success, 10%);
+	position: relative;
 	z-index: 70;
+}
+
+// Pitch
+.pitch{
+	color: #fff;
+	position: absolute;
+	overflow-y: auto;
+	// top: 180px;
+	// right: 0;
+	// bottom: 0;
+	// left: 0;
+	z-index: 10;
+}
+.card {
+	@include box_shadow;
+	@include transition_short;
+	background-color: #fff;
+	height: 100px;
+	text-align: center;
+	&:nth-child(2n) {
+		background-color: darken(#fff, 2%);
+	}
+	&:hover {
+		background-color: lighten($brand-primary, 30%);;
+	}
+	img {
+		margin: 0 auto;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 }
