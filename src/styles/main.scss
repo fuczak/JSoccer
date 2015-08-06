@@ -96,6 +96,9 @@ h1 {
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);		
 	}
+	&:hover {
+		background-color: darken($brand-success, 10%);
+	}
 }
 
 .flag-img {
@@ -174,8 +177,15 @@ header {
 .sidebar {
 	@include box_shadow;
 	background-color: $brand-success;
-	text-align: center;
 	padding: 20px;
+	.remaining {
+		background-color: #fff;
+		color: #000;
+		padding: 10px;
+		&:nth-child(2n) {
+			background-color: darken(#fff, 2%)
+		}
+	}
 }
 
 // Pitch
