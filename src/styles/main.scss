@@ -183,7 +183,7 @@ header {
 .card {
 	@include box_shadow;
 	background-color: #fff;
-	height: 100px;
+	height: 150px;
 	text-align: center;
 	margin: 1px 0;
 	&:nth-child(2n) {
