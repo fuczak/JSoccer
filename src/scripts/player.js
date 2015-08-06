@@ -1,3 +1,5 @@
+var helpers = require('./helpers');
+
 var team;
 
 var player = {
@@ -19,13 +21,14 @@ function getTeam() {
 function setTactics(formation, mentality) {
   setMentality(mentality);
   var array = formation.split('');
-  team.skill.defense *= (1-1/array[0]);
-  team.skill.midfield *= (1-1/array[1]);
-  team.skill.attack *= (1-1/array[2]);
+  team.skill.defense *= helpers.getTacticCoef(array[0]);
+  team.skill.midfield *= helpers.getTacticCoef(array[1]);
+  team.skill.attack *= helpers.getTacticCoef(array[2]);
+  console.log(team.skill);
 }
 
 function setMentality(mentality) {
-  team.mentality = mentality;
+  team.mentality = helpers.getMentalityCoef(mentality);
 }
 
 function getMentality() {

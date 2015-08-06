@@ -61,9 +61,9 @@ var teamlist = [
     id: 'PL',
     name: 'Poland',
     skill: {
-      attack: 50,
-      midfield: 50,
-      defense: 50
+      attack: 100,
+      midfield: 100,
+      defense: 100
     }
   },
   {

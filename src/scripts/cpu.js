@@ -1,10 +1,12 @@
+var helpers = require('./helpers');
+
+var team;
+
 var cpu = {
   setTeam: setTeam,
   getTeam: getTeam,
   setTactics: setTactics
 };
-
-var team;
 
 function setTeam(selectedTeam) {
   team = selectedTeam;
@@ -15,7 +17,10 @@ function getTeam() {
 }
 
 function setTactics(formation, mentality) {
-  // Randomly affect the team skill levels?
+  team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
+  team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
+  team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
+  console.log(team.skill);
 }
 
 module.exports = cpu;
