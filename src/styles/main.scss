@@ -36,10 +36,16 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 	background-color: $brand-info;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .ramjet-hidden {
-	opacity: 1;
+	opacity: 0;
 }
 
 .panel {
@@ -50,7 +56,7 @@ html, body {
 // TYPOGRAPHY
 
 h1 {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 // SECTIONS
@@ -88,7 +94,7 @@ h1 {
   margin: 20px 0px;
   display: inline-block;
 	&:nth-child(2n) {
-		background-color: darken(#fff, 2%);
+		background-color: darken(#fff, 2%);		
 	}
 }
 
@@ -114,7 +120,6 @@ header {
 
 .score-board {
   overflow: hidden;
-  padding: 5px;
   display: inline-block;
 }
 
@@ -162,11 +167,15 @@ header {
 	height: 80px;
 	z-index: 70;
 }
-.info-section {
-	&.commentary {
-		background-color: #fff;
-		height: 80px;
-	}
+.commentary {
+	background-color: #fff;
+	height: 80px;
+}
+.sidebar {
+	@include box_shadow;
+	background-color: $brand-success;
+	text-align: center;
+	padding: 20px;
 }
 
 // Pitch
@@ -185,7 +194,6 @@ header {
 	background-color: #fff;
 	height: 150px;
 	text-align: center;
-	margin: 1px 0;
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
 	}

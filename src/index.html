@@ -6,6 +6,7 @@
     <title>JSoccer</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- build:css styles/main.css -->
   	<link rel="stylesheet" type="text/css" src="styles/main.css">
   	<!-- endbuild -->
@@ -108,21 +109,51 @@
     <section class="tactic-options tactic-hide" id="infoBar">
       <div class="container">
         <div class="row">
-          <!-- <div class="col-md-4 info-section" id="tactics">
-            Tactics
-          </div> -->
-          <div class="col-md-4 info-section commentary" id="commentary">
+          <div class="col-xs-12 commentary" id="commentary">
             Commentary
           </div>
-          <!-- <div class="col-md-4 info-section" id="remaining">
-            Remaining
-          </div> -->
         </div>
       </div>
     </section>
-    <section class="pitch" id="pitch">
-      <div class="container">
+    <section class="pitch">
+      <div class="container-fluid">
         <div class="row">
+          <div class="col-md-2 sidebar">
+            <p>Tactics</p>
+            <hr>
+            <h6>Substitutions</h6>
+            <div class="btn-group" data-toggle="buttons">
+              <button class="btn btn-primary">Sub</button>
+              <button class="btn btn-primary">Sub</button>
+              <button class="btn btn-primary">Sub</button>
+            </div>
+            <h6>Mentality</h6>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" value=0 checked> Defensive
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" value=1> Normal
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" value=2> Atacking
+              </label>
+            </div>
+            <h6>Strategy</h6>
+            <div class="btn-group" data-toggle="buttons">
+              <button class="btn btn-primary">Waste time</button>
+              <button class="btn btn-primary">Retain posession</button>
+              <button class="btn btn-primary">All out attack</button>
+            </div>
+          </div>
+          <div class="col-md-8" id="pitch">
+            <div class="row">
+              
+            </div>
+          </div>
+          <div class="col-md-2 sidebar">
+            Cards
+          </div>
         </div>
       </div>
     </section>

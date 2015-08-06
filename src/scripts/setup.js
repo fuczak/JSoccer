@@ -2,6 +2,7 @@ var teams = require('./teams');
 var player = require('./player');
 var cpu = require('./cpu');
 var engine = require('./engine');
+var helpers = require('./helpers');
 var $ = require('jquery');
 
 function setTeams(e) {
@@ -33,8 +34,10 @@ function setTactics(e) {
 }
 
 function init() {
-  teams.prepare();
-  $('#overlay').on('click', setTeams);
+	teams.prepare();
+	helpers.arrangeButtons();
+	$(window).resize(helpers.arrangeButtons);
+	$('#overlay').on('click', setTeams);
 	$('#confirmTactic').on('click', setTactics);
 	engine.init();
 }
