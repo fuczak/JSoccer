@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var ramjet = require('ramjet');
+var tactics = require('./tactics');
 
 var engine = {
   init: init
@@ -10,6 +11,7 @@ function init() {
     $('#pitch').find('.row').append('<div class="col-xs-3 col-md-2 card"></div>');
   }
   $('.card').on('click', clickHandler);
+  $('#subButtons').on('click', tactics.makeSub);
 }
 
 function clickHandler(e) {
