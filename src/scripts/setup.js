@@ -25,9 +25,8 @@ function setTeams(e) {
 
 function setTactics(e) {
 	e.preventDefault();
-	var formation = $('#formation .active input')[0].value;
-	var mentality = $('#mentality .active input')[0].value;
-	console.log(formation, mentality);
+	var formation = $('#formation .active input').val();
+	var mentality = $('#mentality .active input').val();
 	player.setTactics(formation, mentality);
 	cpu.setTactics(formation, mentality);
 	$('#tacticSetup').addClass('tactic-hide');
