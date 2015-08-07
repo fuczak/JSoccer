@@ -1,5 +1,4 @@
 module.exports = function(e) {
-	console.log(e);
 	var node = document.createElement('div');
 	var image = document.createElement('img');
 	var text = document.createTextNode(e.id);
