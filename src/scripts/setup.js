@@ -7,14 +7,14 @@ var $ = require('jquery');
 
 function setTeams(e) {
 	// Set target correctly even if user clicks on flag
-	var target = $(e.target).closest('.flag')[0];
+	var target = $(e.target).closest('.flag');
 
 	// Return if target is not a team card
 	if (target === undefined) return;
 
 	// Set user team and paint it to scoreboard
-	teams.setPlayerTeam(target.textContent);
-	$('#userTeam').append(target.innerHTML);
+	teams.setPlayerTeam(target.text());
+	$('#userTeam').append(target.html());
 
 	// Set CPU team and paint it to scoreboard
 	$('#cpuTeam').append(teams.setCpuTeam);
