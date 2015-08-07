@@ -5,7 +5,7 @@ var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
 var cardClickHandler = require('./cardClickHandler');
 var generateCards = require('./generateCards');
-var engine = require('../engine');
+var engine = require('../engine/index');
 
 var ui = {
 	init: init
