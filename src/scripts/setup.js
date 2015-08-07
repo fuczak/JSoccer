@@ -10,7 +10,7 @@ function setTeams(e) {
 	var target = $(e.target).closest('.flag')[0];
 
 	// Return if target is not a team card
-	if (target === null) return;
+	if (target === undefined) return;
 
 	// Set user team and paint it to scoreboard
 	teams.setPlayerTeam(target.textContent);
