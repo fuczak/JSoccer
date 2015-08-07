@@ -7,7 +7,7 @@ var $ = require('jquery');
 
 function setTeams(e) {
 	// Set target correctly even if user clicks on flag
-	var target = e.target.closest('.flag');
+	var target = $(e.target).closest('.flag')[0];
 
 	// Return if target is not a team card
 	if (target === null) return;
@@ -25,8 +25,9 @@ function setTeams(e) {
 
 function setTactics(e) {
 	e.preventDefault();
-	var formation = $('#formation').find('.active').children()[0].value;
-	var mentality = $('#mentality').find('.active').children()[0].value;
+	var formation = $('#formation .active input')[0].value;
+	var mentality = $('#mentality .active input')[0].value;
+	console.log(formation, mentality);
 	player.setTactics(formation, mentality);
 	cpu.setTactics(formation, mentality);
 	$('#tacticSetup').addClass('tactic-hide');
