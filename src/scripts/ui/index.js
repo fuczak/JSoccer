@@ -5,6 +5,7 @@ var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
 var cardClickHandler = require('./cardClickHandler');
 var generateCards = require('./generateCards');
+var engine = require('../engine');
 
 var ui = {
 	init: init
@@ -19,6 +20,9 @@ function init() {
 	$('#overlay .flag').on('click', setTeams);
 	$('#confirmTactic').on('click', setTactics);
 	$('.card').on('click', cardClickHandler);
+	$('#subButtons button').on('click', function(e) {
+		engine.delegate('makeSub', e);
+	});
 }
 
 module.exports = ui;
