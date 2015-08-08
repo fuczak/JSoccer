@@ -9,7 +9,7 @@ var engine = require('../engine/index');
 
 var ui = {
 	init: init
-}
+};
 
 function init() {
 	prepareTeams();

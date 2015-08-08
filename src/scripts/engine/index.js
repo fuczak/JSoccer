@@ -1,17 +1,23 @@
 var init = require('./init');
 var delegate = require('./delegate');
+var evaluateOutcome = require('./evaluateOutcome');
 var tactics = require('../tactics');
 var outcomes = require('../outcomes');
 
-var state = {};
+var _state = {};
 
-var api = {
-  getOutcome: outcomes.getOutcome
+var _api = {
+  evaluateOutcome: evaluateOutcome
 };
 
 var engine = {
   init: init,
-  delegate: delegate.bind(api)
+  getState: getState,
+  delegate: delegate.bind(_api),
 };
+
+function getState() {
+  return _state;
+}
 
 module.exports = engine;

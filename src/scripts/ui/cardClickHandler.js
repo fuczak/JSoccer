@@ -3,7 +3,6 @@ var ramjet = require('ramjet');
 var engine = require('../engine/index');
 
 function _cardToCommentary(e, outcome) {
-	if ($(this).hasClass('ramjet-hidden')) return;
 	var a = e.target;
 	var b = document.getElementById('commentary');
 
@@ -20,6 +19,7 @@ function _cardToCommentary(e, outcome) {
 }
 
 module.exports = function(e) {
-	var outcome = engine.delegate('getOutcome', e.target.id);
+	if ($(this).hasClass('ramjet-hidden')) return;
+	var outcome = engine.delegate('evaluateOutcome', e.target.id);
 	_cardToCommentary(e, outcome);
 };
