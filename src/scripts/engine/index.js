@@ -1,11 +1,12 @@
 var init = require('./init');
 var delegate = require('./delegate');
 var tactics = require('../tactics');
+var outcomes = require('../outcomes');
 
 var state = {};
 
 var api = {
-  makeSub: tactics.makeSub
+  getOutcome: outcomes.getOutcome
 };
 
 var engine = {

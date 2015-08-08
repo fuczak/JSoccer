@@ -1,7 +1,8 @@
 var $ = require('jquery');
 var ramjet = require('ramjet');
+var engine = require('../engine/index');
 
-var handler = function cardToCommentary(e) {
+function _cardToCommentary(e, outcome) {
 	if ($(this).hasClass('ramjet-hidden')) return;
 	var a = e.target;
 	var b = document.getElementById('commentary');
@@ -10,7 +11,7 @@ var handler = function cardToCommentary(e) {
 	ramjet.transform(a, b, {
 	  done: function() {
 	    b.classList.remove('ramjet-hidden');
-	    b.textContent = 'oke';
+	    b.textContent = outcome;
 	  },
 	  duration: 600,
 	  easing: ramjet.easeInOut
@@ -18,4 +19,7 @@ var handler = function cardToCommentary(e) {
 	a.classList.add('ramjet-hidden');
 }
 
-module.exports = handler;
+module.exports = function(e) {
+	var outcome = engine.delegate('getOutcome', e.target.id);
+	_cardToCommentary(e, outcome);
+};

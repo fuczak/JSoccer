@@ -22,7 +22,6 @@ function generate() {
   }
   // Shuffle the array
   _outcomeArray = shuffle(_outcomeArray);
-  console.log(_outcomeArray);
 }
 
 function clear() {
