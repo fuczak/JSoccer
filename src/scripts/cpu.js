@@ -17,9 +17,9 @@ function getTeam() {
 }
 
 function setTactics(formation, mentality) {
-  team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
-  team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
-  team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
+  _team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
+  _team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
+  _team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
 }
 
 module.exports = cpu;
