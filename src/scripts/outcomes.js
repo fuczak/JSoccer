@@ -12,9 +12,10 @@ var outcomes = {
 };
 
 function generate() {
+  // Prepare array for ui painting
+  var outcomesForUi = [0, 0, 0, 0, 0];
   // First, add between one and three Whistle events
   var whistleEvents = helpers.random(1, 3);
-  var outcomesForUi = [0, 0, 0, 0, 0];
   for (var i = 0; i < whistleEvents; i++) {
     _outcomeArray.push('Whistle');
     outcomesForUi[4] += 1;
