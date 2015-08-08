@@ -19,7 +19,10 @@ function _cardToCommentary(e, outcome) {
 }
 
 module.exports = function(e) {
+	// Return if card has been already clicked
 	if ($(this).hasClass('ramjet-hidden')) return;
 	var outcome = engine.delegate('evaluateOutcome', e.target.id);
-	_cardToCommentary(e, outcome);
+	if (outcome) {
+		_cardToCommentary(e, outcome);
+	}
 };

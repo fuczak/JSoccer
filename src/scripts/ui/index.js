@@ -5,10 +5,12 @@ var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
 var cardClickHandler = require('./cardClickHandler');
 var generateCards = require('./generateCards');
+var cardNumber = require('./cardNumber');
 var engine = require('../engine/index');
 
 var ui = {
-	init: init
+	init: init,
+	cardNumber: cardNumber
 };
 
 function init() {
