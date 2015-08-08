@@ -24,7 +24,6 @@ function setTactics(formation, mentality) {
   team.skill.defense *= helpers.getTacticCoef(array[0]);
   team.skill.midfield *= helpers.getTacticCoef(array[1]);
   team.skill.attack *= helpers.getTacticCoef(array[2]);
-  console.log(team.skill);
 }
 
 function setMentality(mentality) {
