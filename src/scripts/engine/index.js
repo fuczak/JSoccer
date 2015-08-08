@@ -6,7 +6,7 @@ var state = {};
 
 var api = {
   makeSub: tactics.makeSub
-}
+};
 
 var engine = {
   init: init,

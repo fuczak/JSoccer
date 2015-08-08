@@ -1,6 +1,6 @@
 var helpers = require('./helpers');
 
-var team;
+var _team;
 
 var player = {
   setTeam: setTeam,
@@ -11,11 +11,11 @@ var player = {
 };
 
 function setTeam(selectedTeam) {
-  team = selectedTeam;
+  _team = selectedTeam;
 }
 
 function getTeam() {
-  return team;
+  return _team;
 }
 
 function setTactics(formation, mentality) {
