@@ -1,6 +1,6 @@
 var helpers = require('./helpers');
 
-var team;
+var _team;
 
 var cpu = {
   setTeam: setTeam,
@@ -9,18 +9,17 @@ var cpu = {
 };
 
 function setTeam(selectedTeam) {
-  team = selectedTeam;
+  _team = selectedTeam;
 }
 
 function getTeam() {
-  return team;
+  return _team;
 }
 
 function setTactics(formation, mentality) {
-  team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
-  team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
-  team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
-  console.log(team.skill);
+  _team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
+  _team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
+  _team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
 }
 
 module.exports = cpu;
