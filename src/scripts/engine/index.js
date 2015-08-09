@@ -15,7 +15,6 @@ function init() {
 }
 
 function handleCardClick(e) {
-  console.log(e, _state);
   // Throttle player input
   if (_state.evaluating) return;
   if (e) {
@@ -29,7 +28,7 @@ function handleCardClick(e) {
       _state.isPlayerTurn = evaluateOutcome(_state);
       _state.evaluating = false;
       if (!_state.isPlayerTurn) handleCardClick();
-    }, 1000);
+    }, 2000);
   }
 }
 
