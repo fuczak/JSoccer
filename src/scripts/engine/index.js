@@ -15,16 +15,18 @@ function init() {
 }
 
 function handleCardClick(e) {
-  _state.isPlayerTurn = evaluateOutcome(_state, e);
-  _state.evaluating = true;
-  if (!_state.isPlayerTurn) setTimeout(function() {
-    cpuMove();
-  }, 1000);
-  _state.evaluating = false;
-}
-
-function cpuMove() {
-  handleCardClick();
+  if (_state.evaluating) return;
+  if (_state.isPlayerTurn) {
+    _state.evaluating = true;
+    _state.isPlayerTurn = evaluateOutcome(_state, e);
+    _state.evaluating = false;
+  } else {
+    _state.evaluating = true;
+    setTimeout(function() {
+      _state.isPlayerTurn = evaluateOutcome(_state);
+      _state.evaluating = false;
+    }, 1000);
+  }
 }
 
 module.exports = engine;
