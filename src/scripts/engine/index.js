@@ -3,18 +3,14 @@ var evaluateOutcome = require('./evaluateOutcome');
 var tactics = require('../tactics');
 var outcomes = require('../outcomes');
 
-var _state = {};
+var $ = require('jquery');
 
-var _api = {
-  // Pass current state to the eval outcome function
-  evaluateOutcome: evaluateOutcome.bind(null, _state),
-  makeSub: tactics.makeSub
-};
+var _state = {};
 
 var engine = {
   init: init,
   getState: getState,
-  delegate: delegate.bind(_api),
+  handleCardClick: handleCardClick
 };
 
 function init() {
@@ -25,6 +21,19 @@ function init() {
 
 function getState() {
   return _state;
+}
+
+function handleCardClick(e) {
+  _state.isPlayerTurn = evaluateOutcome(_state, e);
+  _state.evaluating = true;
+  if (!_state.isPlayerTurn) setTimeout(function() {
+    cpuMove();
+  }, 1000);
+  _state.evaluating = false;
+}
+
+function cpuMove() {
+  handleCardClick();
 }
 
 module.exports = engine;
