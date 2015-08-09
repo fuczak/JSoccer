@@ -4,12 +4,14 @@ var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
 var cardToCommentary = require('../ui/cardToCommentary');
 
+// Experimental - simulate random outcomes
+var helpers = require('../helpers');
+
 module.exports = function(state, e) {
   // Prepare index to evaluate outcome
   var index = e === undefined ? undefined : e.target.id;
   // Get current values
   var picked = outcomes.getOutcome(index);
-  console.log(picked);
   var playerSkill = player.getTeam();
   var cpuSkill = cpu.getTeam();
 
@@ -42,6 +44,8 @@ module.exports = function(state, e) {
       uiCardNumber.decrement(4);
       break;
   }
-  cardToCommentary(picked.index, picked.outcome.type);
-  return !state.isPlayerTurn;
+  var random = helpers.random(0, 1);
+  var helperText = random ? 'PLAYER TURN' + picked.outcome.type : 'CPU TURN' + picked.outcome.type;
+  cardToCommentary(picked.index, helperText);
+  return random;
 };
