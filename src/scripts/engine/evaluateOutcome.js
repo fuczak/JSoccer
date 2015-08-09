@@ -2,20 +2,18 @@ var outcomes = require('../outcomes');
 var player = require('../player');
 var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
+var cardToCommentary = require('../ui/cardToCommentary');
 
-module.exports = function(state, index) {
-  // Return if evaluation is in process
-  if (state.evaluating) return;
-  // Set global state as evaluating
-  state.evaluating = true;
+module.exports = function(state, e) {
+  // Prepare index to evaluate outcome
+  var index = e === undefined ? undefined : e.target.id;
   // Get current values
-  var outcome = outcomes.getOutcome(index);
+  var picked = outcomes.getOutcome(index);
+  console.log(picked);
   var playerSkill = player.getTeam();
   var cpuSkill = cpu.getTeam();
 
-  console.log(state, outcome, playerSkill, cpuSkill);
-
-  switch (outcome) {
+  switch (picked.outcome.type) {
     case 'Goal':
       uiCardNumber.decrement(0);
       break;
@@ -44,11 +42,6 @@ module.exports = function(state, index) {
       uiCardNumber.decrement(4);
       break;
   }
-
-  // Throttle player input
-  setTimeout(function() {
-    state.evaluating = false;
-  }, 1000);
-
-  return outcome;
+  cardToCommentary(picked.index, picked.outcome.type);
+  return !state.isPlayerTurn;
 };
