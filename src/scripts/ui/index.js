@@ -12,6 +12,8 @@ var ui = {
 };
 
 function init() {
+	$('#overlay').removeClass('overlay-hide');
+	$('#tacticSetup').removeClass('tactic-hide');
 	prepareTeams();
 	arrangeSidebarButtons();
 	generateCards();
@@ -20,9 +22,6 @@ function init() {
 	$('#overlay .flag').on('click', setTeams);
 	$('#confirmTactic').on('click', setTactics);
 	$('.card').on('click', cardClickHandler);
-	$('#subButtons button').on('click', function(e) {
-		engine.delegate('makeSub', e);
-	});
 }
 
 module.exports = ui;

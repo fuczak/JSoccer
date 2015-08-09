@@ -9,5 +9,4 @@ module.exports = function(e) {
 	player.setTactics(formation, mentality);
 	cpu.setTactics(formation, mentality);
 	$('#tacticSetup').addClass('tactic-hide');
-	$('#infoBar').removeClass('tactic-hide');
 }
