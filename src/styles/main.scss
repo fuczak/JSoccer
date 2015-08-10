@@ -44,6 +44,10 @@ html, body {
 	user-select: none;
 }
 
+input[type="radio"] {
+	display: none;
+}
+
 .ramjet-hidden {
 	opacity: 0;
 }
@@ -181,6 +185,15 @@ header {
 .commentary {
 	background-color: #fff;
 	height: 80px;
+	overflow: hidden;
+	p {
+		@include transition_short;
+		position: relative;
+		transform: translate(-600px, 0);
+		&.entered {
+			transform: translate(0, 0);
+		}
+	}
 }
 .sidebar {
 	@include box_shadow;
@@ -217,10 +230,10 @@ header {
 .card {
 	border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
-	background-image: url('../images/soccer66.png');
-	background-size: 40px;
-	background-position: center;
-	background-repeat: no-repeat;
+	// background-image: url('../images/soccer66.png');
+	// background-size: 40px;
+	// background-position: center;
+	// background-repeat: no-repeat;
 	min-height: 125px;
 	text-align: center;
 	&:nth-child(2n) {
