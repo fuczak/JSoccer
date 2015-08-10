@@ -22,7 +22,7 @@ function handleCardClick(e) {
   // If 'e' is passed as an argument it means it's a player turn
   if (e) {
     _state.evaluating = true;
-    evaluated = evaluateOutcome(_state, e);    
+    evaluated = evaluateOutcome(_state, e);
     _state.evaluating = false;
     // if (evaluated.isWhistle) return alert('Whistle!');
     if (!evaluated.shouldContinue) handleCardClick();
