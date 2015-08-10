@@ -14,11 +14,12 @@ module.exports = function(state, e) {
   var picked = outcomes.getOutcome(index);
   var playerSkill = player.getTeam();
   var cpuSkill = cpu.getTeam();
-  var shouldSwitch;
+  var shouldContinue = true;
+  var isWhistle = false;
 
   switch (picked.outcome.type) {
     case 'Goal':
-      shouldSwitch = true;
+      shouldContinue = false;
       uiCardNumber.decrement(0);
       break;
     case 'Chance':
@@ -28,26 +29,34 @@ module.exports = function(state, e) {
       uiCardNumber.decrement(2);
       break;
     case 'Tackle':
+      shouldContinue = false;
       uiCardNumber.decrement(3);
       break;
     case 'Injury':
       uiCardNumber.decrement(4);
       break;
     case 'Offside':
+      shouldContinue = false;
       uiCardNumber.decrement(4);
       break;
     case 'Penalty':
       uiCardNumber.decrement(4);
       break;
     case 'Red Card':
+      shouldContinue = false;
       uiCardNumber.decrement(4);
       break;
     case 'Whistle':
+      shouldContinue = false;
+      isWhistle = true;
       uiCardNumber.decrement(4);
       break;
   }
-  var random = helpers.random(0, 1);
-  var helperText = shouldSwitch ? 'It is now player turn, ' + picked.outcome.type : 'It is now cpu turn, ' + picked.outcome.type;
+  var helperText = picked.outcome.type;
+  shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.'
   cardToCommentary(picked.index, helperText);
-  return shouldSwitch;
+  return {
+    shouldContinue: shouldContinue,
+    isWhistle: isWhistle
+  };
 };
