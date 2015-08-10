@@ -123,19 +123,19 @@
             <hr>
             <h6>Substitutions</h6>
             <div class="btn-group" data-toggle="buttons" id="subButtons">
-              <button class="btn btn-primary">Sub</button>
-              <button class="btn btn-primary">Sub</button>
-              <button class="btn btn-primary">Sub</button>
+              <button class="btn btn-info btn-tactic">Sub</button>
+              <button class="btn btn-info btn-tactic">Sub</button>
+              <button class="btn btn-info btn-tactic">Sub</button>
             </div>
             <h6>Mentality</h6>
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-primary active">
+              <label class="btn btn-info btn-tactic active">
                 <input type="radio" value=0 checked> Defensive
               </label>
-              <label class="btn btn-primary">
+              <label class="btn btn-info btn-tactic">
                 <input type="radio" value=1> Normal
               </label>
-              <label class="btn btn-primary">
+              <label class="btn btn-info btn-tactic">
                 <input type="radio" value=2> Atacking
               </label>
             </div>
@@ -148,16 +148,17 @@
           </div>
           <div class="col-md-8" id="pitch">
             <div class="row">
-
+            <!-- Populated by JS -->
             </div>
           </div>
           <div class="col-md-2 sidebar">
             <p>Remaining cards</p>
-            <div class="remaining"><h6>Goal <span class="badge" id="goalNumber">4</span></h6></div>
-            <div class="remaining"><h6>Chance <span class="badge" id="chanceNumber">4</span></h6></div>
-            <div class="remaining"><h6>Pass <span class="badge" id="passNumber">4</span></h6></div>
-            <div class="remaining"><h6>Tackle <span class="badge" id="tackleNumber">4</span></h6></div>
-            <div class="remaining"><h6>Other <span class="badge" id="otherNumber">4</span></h6></div>
+            <hr>
+            <div class="remaining"><h4>Goal <span class="label label-success" id="goalNumber">4</span></h4></div>
+            <div class="remaining"><h4>Chance <span class="label label-primary" id="chanceNumber">4</span></h4></div>
+            <div class="remaining"><h4>Pass <span class="label label-info" id="passNumber">4</span></h4></div>
+            <div class="remaining"><h4>Tackle <span class="label label-danger" id="tackleNumber">4</span></h4></div>
+            <div class="remaining"><h4>Other <span class="label label-warning" id="otherNumber">4</span></h4></div>
           </div>
         </div>
       </div>

@@ -23,7 +23,12 @@ function set(array) {
 
 function decrement(type) {
   var selectedCard = numbers[type];
+  selectedCard.closest('.remaining').addClass('remaining-selected');
   selectedCard.text(selectedCard.text() - 1);
+  setTimeout(function() {
+    selectedCard.closest('.remaining').removeClass('remaining-selected');
+  }, 200);
+  
 }
 
 module.exports = cardNumber;
