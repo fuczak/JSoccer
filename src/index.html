@@ -109,7 +109,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 commentary" id="commentary">
-            Commentary
+            <p class="entered">Commentary</p>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
               <button class="btn btn-info btn-tactic">Sub</button>
             </div>
             <h6>Mentality</h6>
-            <div class="btn-group" data-toggle="buttons">
+            <div class="btn-group" data-toggle="buttons" id="mentalityButtons">
               <label class="btn btn-info btn-tactic active">
                 <input type="radio" value=0 checked> Defensive
               </label>
@@ -166,28 +166,13 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <!-- Place this tag where you want the button to render. -->
             <a class="github-button" href="https://github.com/fuczak/jsoccer" data-count-href="/fuczak/jsoccer/stargazers" data-count-api="/repos/fuczak/jsoccer#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star fuczak/jsoccer on GitHub">Star</a>
-            <!-- Umieść ten tag w miejscu, w którym ma być widoczny przycisk udostępniania. -->
             <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://fuczak.github.io/jsoccer/"></div>
-            <!-- Umieść ten tag po ostatnim tagu widżetu udostępnij. -->
-            <script type="text/javascript">
-              window.___gcfg = {lang: 'en-GB'};
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/platform.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
-            </script>
-            <!-- Twitter -->
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fuczak.github.io/jsoccer/" data-text="Check out JSoccer!" data-via="fuczak" data-related="fuczak" data-hashtags="jsoccer">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fuczak.github.io/jsoccer/" data-text="Check out JSoccer!" data-via="fuczak" data-related="fuczak" data-hashtags="jsoccer">Tweet</a>            
           </div>
         </div>
       </div>
     </section>
-    <!-- Place this tag right after the last button or just before your close body tag. -->
-    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
     <!-- build:js scripts/bundle.js-->
     <script src="scripts/bundle.js"></script>
     <!-- endbuild -->
@@ -198,6 +183,20 @@
         e.src='https://www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
+    <!-- Github -->
+    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+    <!-- G+ -->
+    <script type="text/javascript">
+      window.___gcfg = {lang: 'en-GB'};
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+    <!-- Twitter -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     </script>
   </body>
 </html>
