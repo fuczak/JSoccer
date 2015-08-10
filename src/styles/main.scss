@@ -189,9 +189,11 @@ header {
 	p {
 		@include transition_short;
 		position: relative;
-		transform: translate(-600px, 0);
+		transform: translate(0, -20px);
+		opacity: 0;
 		&.entered {
 			transform: translate(0, 0);
+			opacity: 1;
 		}
 	}
 }
