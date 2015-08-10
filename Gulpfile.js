@@ -47,9 +47,9 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('images', function() {
-  gulp.src('./src/images/flags/*.png')
+  gulp.src('./src/images/**/*.png')
   .pipe(imagemin())
-  .pipe(gulp.dest('./tmp/images/flags'));
+  .pipe(gulp.dest('./tmp/images'));
 });
 
 gulp.task('serve', ['html', 'sass', 'browserify', 'images'], function() {

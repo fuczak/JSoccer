@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>JSoccer</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- build:css styles/main.css -->
   	<link rel="stylesheet" type="text/css" src="styles/main.css">
   	<!-- endbuild -->
   </head>
-  <body>
+  <body itemscope itemtype="http://schema.org/Product">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <section class="overlay" id="overlay">
-      <h1>Welcome to JSoccer</h1>
+      <h1 itemprop="name">Welcome to JSoccer</h1>
       <br>
-      <p>Pick your team and let's play some soccer.</p>
+      <p itemprop="description">Pick your team and let's play some soccer.</p>
       <div class="container-fluid">
         <div class="row teamlist" id="teamlist">
           <!-- <div class="col-xs-2 flag text-center">
@@ -169,8 +168,18 @@
           <div class="col-xs-12">
             <!-- Place this tag where you want the button to render. -->
             <a class="github-button" href="https://github.com/fuczak/jsoccer" data-count-href="/fuczak/jsoccer/stargazers" data-count-api="/repos/fuczak/jsoccer#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star fuczak/jsoccer on GitHub">Star</a>
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/fuczak/jsoccer/fork" data-count-href="/fuczak/jsoccer/network" data-count-api="/repos/fuczak/jsoccer#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork fuczak/jsoccer on GitHub">Fork</a>
+            <!-- Umieść ten tag w miejscu, w którym ma być widoczny przycisk udostępniania. -->
+            <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://fuczak.github.io/jsoccer/"></div>
+            <!-- Umieść ten tag po ostatnim tagu widżetu udostępnij. -->
+            <script type="text/javascript">
+              window.___gcfg = {lang: 'en-GB'};
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+            <!-- Twitter -->
             <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fuczak.github.io/jsoccer/" data-text="Check out JSoccer!" data-via="fuczak" data-related="fuczak" data-hashtags="jsoccer">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
           </div>

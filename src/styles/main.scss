@@ -103,7 +103,9 @@ h1 {
 		background-color: darken(#fff, 2%);
 	}
 	&:hover {
-		background-color: darken($brand-success, 10%);
+		background-color: darken($brand-success, 5%);
+		color: #fff;
+		cursor: pointer;
 	}
 }
 
@@ -215,13 +217,18 @@ header {
 .card {
 	border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
+	background-image: url('../images/soccer66.png');
+	background-size: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
 	min-height: 125px;
 	text-align: center;
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
 	}
 	&:hover {
-		background-color: lighten($brand-primary, 30%);;
+		background-color: darken($brand-info, 5%);
+		cursor: pointer;
 	}
 	img {
 		margin: 0 auto;

@@ -14,9 +14,11 @@ module.exports = function(state, e) {
   var picked = outcomes.getOutcome(index);
   var playerSkill = player.getTeam();
   var cpuSkill = cpu.getTeam();
+  var shouldSwitch;
 
   switch (picked.outcome.type) {
     case 'Goal':
+      shouldSwitch = true;
       uiCardNumber.decrement(0);
       break;
     case 'Chance':
@@ -45,7 +47,7 @@ module.exports = function(state, e) {
       break;
   }
   var random = helpers.random(0, 1);
-  var helperText = random ? 'PLAYER TURN' + picked.outcome.type : 'CPU TURN' + picked.outcome.type;
+  var helperText = shouldSwitch ? 'It is now player turn, ' + picked.outcome.type : 'It is now cpu turn, ' + picked.outcome.type;
   cardToCommentary(picked.index, helperText);
-  return random;
+  return shouldSwitch;
 };
