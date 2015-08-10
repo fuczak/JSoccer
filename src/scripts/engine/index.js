@@ -24,7 +24,7 @@ function handleCardClick(e) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, e);    
     _state.evaluating = false;
-    if (evaluated.isWhistle) return alert('Whistle!');
+    // if (evaluated.isWhistle) return alert('Whistle!');
     if (!evaluated.shouldContinue) handleCardClick();
   } else {
     // blockTacticButtons();
@@ -32,7 +32,7 @@ function handleCardClick(e) {
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
       _state.evaluating = false;
-      if (evaluated.isWhistle) return alert('Whistle!');
+      // if (evaluated.isWhistle) return alert('Whistle!');
       if (evaluated.shouldContinue) handleCardClick();
     }, 2000);
   }

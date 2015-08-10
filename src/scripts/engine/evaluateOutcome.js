@@ -8,6 +8,7 @@ var cardToCommentary = require('../ui/cardToCommentary');
 var helpers = require('../helpers');
 
 module.exports = function(state, e) {
+  console.log('init: ' + e);
   // Prepare index to evaluate outcome
   var index = e === undefined ? undefined : e.target.id;
   // Get current values
