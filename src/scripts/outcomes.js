@@ -2,7 +2,7 @@ var helpers = require('./helpers');
 var uiCardNumber = require('./ui/cardNumber');
 var shuffle = require('lodash/collection/shuffle');
 
-var _possibleOutcomes = ['Goal', 'Chance', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
+var _possibleOutcomes = ['Goal', 'Chance', 'Pass', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
 var _outcomeArray = [];
 
 var outcomes = {
