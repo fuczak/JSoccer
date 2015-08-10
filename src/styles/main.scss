@@ -53,6 +53,12 @@ html, body {
 	border-radius: 0;
 }
 
+.btn-round {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
 // TYPOGRAPHY
 
 h1 {
@@ -178,6 +184,7 @@ header {
 	@include box_shadow;
 	background-color: $brand-success;
 	padding: 20px;
+	height: 100%;
 	.remaining {
 		background-color: #fff;
 		color: #000;
@@ -195,14 +202,14 @@ header {
 	overflow-y: auto;
 	top: 200px;
 	right: 0;
-	bottom: 0;
+	bottom: 50px;
 	left: 0;
 	z-index: 10;
 }
 .card {
 	border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
-	height: 150px;
+	min-height: 125px;
 	text-align: center;
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
@@ -216,4 +223,14 @@ header {
 		top: 50%;
 		transform: translateY(-50%);
 	}
+}
+
+// FOOTER
+.footer {
+	background-color: $brand-success;
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	bottom: 0;
+	padding: 5px;
 }
