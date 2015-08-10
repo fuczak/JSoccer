@@ -2,7 +2,7 @@ var helpers = require('./helpers');
 var uiCardNumber = require('./ui/cardNumber');
 var shuffle = require('lodash/collection/shuffle');
 
-var _possibleOutcomes = ['Goal', 'Chance', 'Pass', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
+var _possibleOutcomes = ['Goal', 'Chance', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
 var _outcomeArray = [];
 
 var outcomes = {
@@ -20,9 +20,15 @@ function generate() {
     _outcomeArray.push({type: 'Whistle', picked: false});
     outcomesForUi[4] += 1;
   }
+  // Then, add between 6 and 12 Pass events
+  // var passEvents = helpers.random(6, 12)
+  // for (var j = 0; j < passEvents; j++) {
+  //   _outcomeArray.push({type: 'Pass', picked: false});
+  //   outcomesForUi[2] += 1;
+  // }
   // Fill the rest of the array with random events
-  for (var j = 0; j < 24 - whistleEvents; j++) {
-    var index = helpers.random(0, 7);
+  for (var k = 0; k < 24 - whistleEvents; k++) {
+    var index = helpers.random(0, 6);
     _outcomeArray.push({type: _possibleOutcomes[index], picked: false});
     index < 4 ? outcomesForUi[index] += 1 : outcomesForUi[4] += 1;
   }
