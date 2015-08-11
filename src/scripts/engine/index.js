@@ -18,6 +18,7 @@ function init() {
   _state.isPlayerTurn = true;
   _state.shouldContinue = false;
   _state.isFirstHalf = true;
+  uiGenerateCards(handleCardClick);
 }
 
 function handleCardClick(e) {
@@ -42,13 +43,13 @@ function handleCardClick(e) {
         if (evaluated.isWhistle) return handleWhistle();      
         if (evaluated.shouldContinue) handleCardClick(); 
       });      
-    }, 2000);
+    }, 200);
   }
 }
 
 function handleWhistle() {
   if (!_state.isFirstHalf) return alert('Game over!');
-  uiGenerateCards();
+  uiGenerateCards(handleCardClick);
   outcomes.generate()
   console.log(_state.evaluating);
   _state.isFirstHalf = false
