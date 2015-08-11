@@ -3,15 +3,15 @@ var uiCardNumber = require('./ui/cardNumber');
 var shuffle = require('lodash/collection/shuffle');
 
 var _possibleOutcomes = ['Goal', 'Chance', 'Pass', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
-var _outcomeArray = [];
+var _outcomeArray;
 
 var outcomes = {
   generate: generate,
-  clear: clear,
   getOutcome: getOutcome
 };
 
 function generate() {
+  _outcomeArray = []
   // Prepare array for ui painting
   var outcomesForUi = [0, 0, 0, 0, 0];
   // First, add between one and three Whistle events
@@ -36,13 +36,10 @@ function generate() {
   _outcomeArray = shuffle(_outcomeArray);
   // Send the ui array for preparing remaining cards sidebar
   uiCardNumber.set(outcomesForUi);
+  console.log(_outcomeArray);
 }
-
-function clear() {
-  _outcomeArray = [];
-}
-
 function getOutcome(index) {
+  // If index is undefined get the random outcome for cpu
   if (index === undefined) {
     var pickedIndex = helpers.random(0, 23);
     if (_outcomeArray[pickedIndex].picked) {
