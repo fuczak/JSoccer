@@ -1,6 +1,8 @@
 var ramjet = require('ramjet');
+var q = require('q');
 
 module.exports = function(index, outcome) {
+	var deferred = q.defer();
 	var a = document.getElementById(index);
 	var b = document.getElementById('commentary');
 	b.children[0].classList.remove('entered');
@@ -12,10 +14,13 @@ module.exports = function(index, outcome) {
 		   b.children[0].textContent = outcome;
 		   b.children[0].classList.add('entered');
 		   b.classList.remove('ramjet-hidden');
+		   deferred.resolve()
 		  },
 		  duration: 600,
 		  easing: ramjet.easeInOut
 		});
 		a.classList.add('ramjet-hidden');
 	}, 150);
+
+	return deferred.promise;
 };

@@ -1,6 +1,9 @@
 var evaluateOutcome = require('./evaluateOutcome');
 var outcomes = require('../outcomes');
-var blockTacticButtons = require('../ui/blockTacticButtons');
+// var blockTacticButtons = require('../ui/blockTacticButtons');
+var uiGenerateCards = require('../ui/generateCards');
+var cardToCommentary = require('../ui/cardToCommentary');
+
 
 var _state = {};
 
@@ -14,28 +17,41 @@ function init() {
   _state.evaluating = false;
   _state.isPlayerTurn = true;
   _state.shouldContinue = false;
+  _state.isFirstHalf = true;
 }
 
 function handleCardClick(e) {
-  // Throttle player input
+  // Prevent player from clicking on card during cpu turn
   if (_state.evaluating) return;
   // If 'e' is passed as an argument it means it's a player turn
   if (e) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, e);
     _state.evaluating = false;
-    // if (evaluated.isWhistle) return alert('Whistle!');
-    if (!evaluated.shouldContinue) handleCardClick();
+    cardToCommentary(evaluated.index, evaluated.text).then(function() {
+      if (evaluated.isWhistle) return handleWhistle();    
+      if (!evaluated.shouldContinue) handleCardClick();
+    });    
   } else {
     // blockTacticButtons();
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
       _state.evaluating = false;
-      // if (evaluated.isWhistle) return alert('Whistle!');
-      if (evaluated.shouldContinue) handleCardClick();
+      cardToCommentary(evaluated.index, evaluated.text).then(function() {
+        if (evaluated.isWhistle) return handleWhistle();      
+        if (evaluated.shouldContinue) handleCardClick(); 
+      });      
     }, 2000);
   }
+}
+
+function handleWhistle() {
+  if (!_state.isFirstHalf) return alert('Game over!');
+  uiGenerateCards();
+  outcomes.generate()
+  console.log(_state.evaluating);
+  _state.isFirstHalf = false
 }
 
 module.exports = engine;

@@ -2,7 +2,7 @@ var outcomes = require('../outcomes');
 var player = require('../player');
 var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
-var cardToCommentary = require('../ui/cardToCommentary');
+// var cardToCommentary = require('../ui/cardToCommentary');
 
 // Experimental - simulate random outcomes
 var helpers = require('../helpers');
@@ -55,9 +55,11 @@ module.exports = function(state, e) {
   }
   var helperText = picked.outcome.type;
   shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.'
-  cardToCommentary(picked.index, helperText);
+  // cardToCommentary(picked.index, helperText);
   return {
     shouldContinue: shouldContinue,
-    isWhistle: isWhistle
+    isWhistle: isWhistle,
+    index: picked.index,
+    text: helperText
   };
 };
