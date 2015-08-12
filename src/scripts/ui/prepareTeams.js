@@ -7,4 +7,4 @@ module.exports = function() {
 	teamlist.forEach(function(e) {
     	$('#teamlist').append(paintTeamNode(e));
 	});
-}
+};
