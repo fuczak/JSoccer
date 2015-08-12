@@ -28,31 +28,31 @@ function handleCardClick(e) {
   if (e) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, e);
-    _state.evaluating = false;
     cardToCommentary(evaluated.index, evaluated.text).then(function() {
-      if (evaluated.isWhistle) return handleWhistle();    
+      _state.evaluating = false;
+      if (evaluated.isWhistle) return handleWhistle();
       if (!evaluated.shouldContinue) handleCardClick();
-    });    
+    });
   } else {
     // blockTacticButtons();
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
-      _state.evaluating = false;
       cardToCommentary(evaluated.index, evaluated.text).then(function() {
-        if (evaluated.isWhistle) return handleWhistle();      
-        if (evaluated.shouldContinue) handleCardClick(); 
-      });      
-    }, 200);
+        _state.evaluating = false;
+        if (evaluated.isWhistle) return handleWhistle();
+        if (evaluated.shouldContinue) handleCardClick();
+      });
+    }, 1200);
   }
 }
 
 function handleWhistle() {
   if (!_state.isFirstHalf) return alert('Game over!');
   uiGenerateCards(handleCardClick);
-  outcomes.generate()
+  outcomes.generate();
   console.log(_state.evaluating);
-  _state.isFirstHalf = false
+  _state.isFirstHalf = false;
 }
 
 module.exports = engine;
