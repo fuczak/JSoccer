@@ -15,7 +15,7 @@ module.exports = function(handleCardClick) {
 	});
 	$('.card').on('click', function(e) {
 		// Return if card has been already clicked
-		if ($(e).hasClass('ramjet-hidden')) return;
+		if ($(this).hasClass('ramjet-hidden')) return;
 		// Respond to user clicks only after one second since last click
 		if (!animating) {
 			animating = true;

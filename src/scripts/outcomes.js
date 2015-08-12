@@ -14,8 +14,8 @@ function generate() {
   _outcomeArray = []
   // Prepare array for ui painting
   var outcomesForUi = [0, 0, 0, 0, 0];
-  // First, add between one and three Whistle events
-  var whistleEvents = helpers.random(1, 3);
+  // First, add between one and two Whistle events
+  var whistleEvents = helpers.random(1, 2);
   for (var i = 0; i < whistleEvents; i++) {
     _outcomeArray.push({type: 'Whistle', picked: false});
     outcomesForUi[4] += 1;
@@ -36,7 +36,6 @@ function generate() {
   _outcomeArray = shuffle(_outcomeArray);
   // Send the ui array for preparing remaining cards sidebar
   uiCardNumber.set(outcomesForUi);
-  console.log(_outcomeArray);
 }
 function getOutcome(index) {
   // If index is undefined get the random outcome for cpu
