@@ -25,6 +25,14 @@ $brand-info: #A0CFD3;
 	transition: 300ms all 150ms ease-in-out;
 }
 
+@mixin card_text {
+	@include box_shadow;
+	color: #000;
+	padding: 10px;
+	background-color: #fff;
+	display: inline-block;
+}
+
 // GENERAL STYLES
 
 * {
@@ -90,10 +98,7 @@ h1 {
 	background-color: $brand-success;
 	z-index: 100;
 	h1, p {
-		@include box_shadow;
-		padding: 10px;
-		background-color: #fff;
-		display: inline-block;
+		@include card_text;
 	}
 }
 
@@ -289,6 +294,13 @@ header {
 		position: relative;
 		top: 50%;
 		transform: translateY(-50%);
+	}
+}
+
+// FULLTIME
+.fulltime {
+	h1, p {
+		@include card_text;
 	}
 }
 
