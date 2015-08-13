@@ -1,3 +1,4 @@
+var random = require('lodash/number/random');
 var evaluateOutcome = require('./evaluateOutcome');
 var uiInit = require('../ui/init');
 var outcomes = require('../outcomes');
@@ -20,9 +21,9 @@ var engine = {
 
 function init() {
   uiMakeCommentary('Let\'s see how the coin toss goes.');
-  uiInit().then(function(playerStarts) {
-    uiMakeCommentary('Someone will start the game.');
+  uiInit(makeSub, changeMentality).then(function(playerStarts) {
     outcomes.generate();
+    uiMakeCommentary('Someone will start the game.');
     uiGenerateCards(handleCardClick);
     _state = {
       player: player.getTeam(),
@@ -62,6 +63,15 @@ function handleCardClick(e) {
       });
     }, 1200);
   }
+}
+
+function makeSub() {
+  _state.player.energy += random(8, 15);
+}
+
+function changeMentality(value) {
+  _state.player.mentality = value;
+  console.log(_state.player.mentality);
 }
 
 function handleWhistle() {

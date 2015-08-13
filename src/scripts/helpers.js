@@ -2,8 +2,7 @@ var $ = require('jquery');
 
 var helpers = {
   random: random,
-  getTacticCoef: getTacticCoef,
-  getMentalityCoef: getMentalityCoef
+  getTacticCoef: getTacticCoef
 };
 
 function random(min, max) {
@@ -12,10 +11,6 @@ function random(min, max) {
 
 function getTacticCoef(input) {
   return 1 - 1/input;
-}
-
-function getMentalityCoef(input) {
-  return input;
 }
 
 module.exports = helpers;

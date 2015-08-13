@@ -6,7 +6,7 @@ var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
 var cardNumber = require('./cardNumber');
 
-module.exports = function init() {
+module.exports = function init(makeSub, changeMentality) {
 
 	var deferred = q.defer();
 
@@ -19,7 +19,17 @@ module.exports = function init() {
 	$('#tacticSetup').removeClass('main-splash-hide');
 	$('#confirmTactic').on('click', setTactics);
 
-	// Sidebar setup
+	// Sidebar tactics setup
+	$('#subButtons .btn').removeClass('disabled').prop('disabled', false);
+	$('#subButtons .btn').on('click', function() {
+		makeSub();
+		$(this).addClass('disabled');
+	});
+	$('#mentalityButtons label').on('click', function() {
+		changeMentality(+$(this).find('input').val());
+	});
+
+	// Sidebar remaining setup
 	cardNumber.set([0, 0, 0, 0, 0]);
 
 	// Coin toss

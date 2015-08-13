@@ -10,6 +10,7 @@ var cpu = {
 
 function setTeam(selectedTeam) {
   _team = selectedTeam;
+  _team.energy = 100;
 }
 
 function getTeam() {

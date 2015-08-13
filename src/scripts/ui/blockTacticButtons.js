@@ -4,11 +4,11 @@ var subButtonGroup = $('#subButtons');
 var mentalityButtonGroup = $('#mentalityButtons');
 
 module.exports = function() {
-	var isBlocked = mentalityButtonGroup.attr('data-toggle') === '';
+	var isBlocked = mentalityButtonGroup.prop('data-toggle') === '';
 	if (isBlocked) {
-		mentalityButtonGroup.attr('data-toggle', 'buttons');
+		mentalityButtonGroup.prop('data-toggle', 'buttons');
 	} else {
-		mentalityButtonGroup.attr('data-toggle', '');
+		mentalityButtonGroup.prop('data-toggle', '');
 	}
 	$.each(mentalityButtonGroup.find('.btn'), function(i, e) {
 		$(e).toggleClass('disabled');
