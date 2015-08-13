@@ -2,6 +2,7 @@ var evaluateOutcome = require('./evaluateOutcome');
 var uiInit = require('../ui/init');
 var outcomes = require('../outcomes');
 var uiGenerateCards = require('../ui/generateCards');
+var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
 var cardToCommentary = require('../ui/cardToCommentary');
@@ -18,6 +19,7 @@ var engine = {
 
 function init() {
   uiInit().then(function(playerStarts) {
+    uiMakeCommentary('Someone will start the game.');
     outcomes.generate();
     uiGenerateCards(handleCardClick);
     _state = {
@@ -55,7 +57,7 @@ function handleCardClick(e) {
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 120);
+    }, 1200);
   }
 }
 

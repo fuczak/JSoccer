@@ -26,8 +26,5 @@ module.exports = function init() {
 		deferred.resolve(playerStarts);
 	});
 
-	// Commentary Init
-	$('#commentary p').text('Match game init. Pick coin side.').addClass('entered');
-
 	return deferred.promise;
 };
