@@ -1,8 +1,8 @@
+var random = require('lodash/number/random');
 var outcomes = require('../outcomes');
 var player = require('../player');
 var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
-// var cardToCommentary = require('../ui/cardToCommentary');
 
 // Experimental - simulate random outcomes
 var helpers = require('../helpers');
@@ -52,11 +52,12 @@ module.exports = function(state, e) {
       break;
   }
   var helperText = picked.outcome.type;
-  shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.'
+  shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.';
   return {
     shouldContinue: shouldContinue,
     isWhistle: isWhistle,
     index: picked.index,
+    lostEnergy: random(5, 15),
     text: helperText
   };
 };

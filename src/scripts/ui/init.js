@@ -20,6 +20,7 @@ module.exports = function init(makeSub, changeMentality) {
 	$('#confirmTactic').on('click', setTactics);
 
 	// Sidebar tactics setup
+	$('.progress-bar').removeClass().addClass('progress-bar progress-bar-info').css('width', '100%');
 	$('#subButtons .btn').removeClass('disabled').prop('disabled', false);
 	$('#subButtons .btn').on('click', function() {
 		makeSub();

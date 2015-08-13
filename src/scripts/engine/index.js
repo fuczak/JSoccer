@@ -6,6 +6,7 @@ var uiGenerateCards = require('../ui/generateCards');
 var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
+var uiUpdateEnergyBar = require('../ui/updateEnergyBar');
 var cardToCommentary = require('../ui/cardToCommentary');
 var uiBlockTacticButtons = require('../ui/blockTacticButtons');
 var player = require('../player');
@@ -46,6 +47,8 @@ function handleCardClick(e) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, e);
     cardToCommentary(evaluated.index, evaluated.text).then(function() {
+      _state.player.energy -= evaluated.lostEnergy;
+      uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
       if (evaluated.isWhistle) return handleWhistle();
       if (!evaluated.shouldContinue) handleCardClick();
@@ -67,6 +70,7 @@ function handleCardClick(e) {
 
 function makeSub() {
   _state.player.energy += random(8, 15);
+  uiUpdateEnergyBar(_state.player.energy);
 }
 
 function changeMentality(value) {
