@@ -24,11 +24,11 @@ function init() {
       evaluating: false,
       shouldContinue: false,
       isFirstHalf: true
-    }
+    };
     console.log(_state);
     if (!playerStarts) handleCardClick();
   });
-  
+
 }
 
 function handleCardClick(e) {
@@ -53,13 +53,12 @@ function handleCardClick(e) {
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 1200);
+    }, 120);
   }
 }
 
 function handleWhistle() {
   if (!_state.isFirstHalf) {
-    alert('Game over!');
     return init();
   }
   uiGenerateCards(handleCardClick);

@@ -16,7 +16,8 @@ function getTeam() {
   return _team;
 }
 
-function setTactics(formation, mentality) {
+function setTactics(formation) {
+  // Maybe pick a best counter - formation?
   _team.skill.defense *= helpers.getTacticCoef(helpers.random(3, 5));
   _team.skill.midfield *= helpers.getTacticCoef(helpers.random(3, 5));
   _team.skill.attack *= helpers.getTacticCoef(helpers.random(3, 5));
