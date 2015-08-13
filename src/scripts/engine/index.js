@@ -1,9 +1,10 @@
 var evaluateOutcome = require('./evaluateOutcome');
-var outcomes = require('../outcomes');
-// var blockTacticButtons = require('../ui/blockTacticButtons');
 var uiInit = require('../ui/init');
+var outcomes = require('../outcomes');
 var uiGenerateCards = require('../ui/generateCards');
 var cardToCommentary = require('../ui/cardToCommentary');
+var player = require('../player');
+var cpu = require('../cpu');
 
 
 var _state = {};
@@ -14,14 +15,20 @@ var engine = {
 };
 
 function init() {
-  uiInit().then(function(data) {
+  uiInit().then(function(playerStarts) {
     outcomes.generate();
     uiGenerateCards(handleCardClick);
+    _state = {
+      player: player.getTeam(),
+      cpu: cpu.getTeam(),
+      evaluating: false,
+      shouldContinue: false,
+      isFirstHalf: true
+    }
+    console.log(_state);
+    if (!playerStarts) handleCardClick();
   });
-  _state.evaluating = false;
-  _state.isPlayerTurn = true;
-  _state.shouldContinue = false;
-  _state.isFirstHalf = true;
+  
 }
 
 function handleCardClick(e) {
@@ -53,7 +60,7 @@ function handleCardClick(e) {
 function handleWhistle() {
   if (!_state.isFirstHalf) {
     alert('Game over!');
-    init();
+    return init();
   }
   uiGenerateCards(handleCardClick);
   outcomes.generate();
