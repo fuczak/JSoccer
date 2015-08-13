@@ -4,7 +4,7 @@ $brand-success: #4F9D69;
 $brand-primary: #62929E;
 $brand-info: #A0CFD3;
 
-@import url(http://fonts.googleapis.com/css?family=Laila);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
 @import "bootstrap";
 
 // MIXINS
@@ -28,7 +28,7 @@ $brand-info: #A0CFD3;
 // GENERAL STYLES
 
 * {
-	font-family: 'Laila', 'serif';
+	font-family: 'Source Sans Pro', 'serif';
 	font-size: 26px;
 }
 
@@ -165,6 +165,7 @@ header {
 .btn-tactic {
 	border-radius: 0 !important;
 	color: #000;
+	min-width: 120px;
 	@include box_shadow;
 	&.btn-block {
 		color: #fff;
