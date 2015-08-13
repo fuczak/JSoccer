@@ -12,13 +12,13 @@ module.exports = function(e) {
 	// Set user team and paint it to scoreboard
 	var playerSelected = teams.getTeam(id);
 	player.setTeam(playerSelected);
-	$('#userTeam').append($(paintTeamNode(playerSelected)).html());
+	$('#userTeam').html('').append($(paintTeamNode(playerSelected)).html());
 	// $('#userTeam').append(target.html());
 
 	// Set CPU team and paint it to scoreboard
 	var cpuSelected = teams.getTeamForCpu(id);
 	cpu.setTeam(cpuSelected);
-	$('#cpuTeam').append($(paintTeamNode(cpuSelected)).html());
+	$('#cpuTeam').html('').append($(paintTeamNode(cpuSelected)).html());
 
 	// Move overlay out of the way
 	$('#overlay').addClass('overlay-hide');
