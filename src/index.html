@@ -81,7 +81,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 commentary" id="commentary">
-            <p class="entered">The players are already on the pitch.</p>
+            <p>The players are already on the pitch.</p>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
     <section class="pitch">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2 hidden-sm hidden-xs sidebar">
+          <div class="col-md-2 sidebar">
             <p>Tactics</p>
             <hr>
             <h6>Substitutions</h6>
@@ -100,11 +100,11 @@
             </div>
             <h6>Mentality</h6>
             <div class="btn-group" data-toggle="buttons" id="mentalityButtons">
-              <label class="btn btn-info btn-tactic active">
+              <label class="btn btn-info btn-tactic">
                 <input type="radio" value=0 checked> Defensive
               </label>
-              <label class="btn btn-info btn-tactic">
-                <input type="radio" value=1> Normal
+              <label class="btn btn-info btn-tactic active">
+                <input type="radio" value=1 checked> Normal
               </label>
               <label class="btn btn-info btn-tactic">
                 <input type="radio" value=2> Atacking
@@ -112,16 +112,20 @@
             </div>
           </div>
           <div class="col-md-8" id="pitch">
-            <div class="pitch-overlay text-center" id="pitch-overlay">
-              <h2>Pick a side!</h2>
+            <div class="pitch-overlay text-center" id="pitch-setup">
+              <h2>Choose a coin side.</h2>
               <button class="btn btn-warning btn-tactic btn-lg">Heads</button>
               <button class="btn btn-danger btn-tactic btn-lg">Tails</button>
+            </div>
+            <div class="pitch-overlay pitch-overlay-hidden text-center" id="pitch-halftime">
+              <h2>Press the button below to start second half.</h2>
+              <button class="btn btn-danger btn-tactic btn-lg">I'm ready!</button>
             </div>
             <div class="row">
             <!-- Populated by JS -->
             </div>
           </div>
-          <div class="col-md-2 hidden-sm hidden-xs sidebar">
+          <div class="col-md-2 sidebar">
             <p>Remaining cards</p>
             <hr>
             <div class="remaining"><h4><span class="label label-success" id="goalNumber">4</span> Goal</h4></div>

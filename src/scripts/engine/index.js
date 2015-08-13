@@ -2,6 +2,8 @@ var evaluateOutcome = require('./evaluateOutcome');
 var uiInit = require('../ui/init');
 var outcomes = require('../outcomes');
 var uiGenerateCards = require('../ui/generateCards');
+var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
+var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
 var cardToCommentary = require('../ui/cardToCommentary');
 var player = require('../player');
 var cpu = require('../cpu');
@@ -58,13 +60,18 @@ function handleCardClick(e) {
 }
 
 function handleWhistle() {
-  if (!_state.isFirstHalf) {
-    return init();
+  console.log(_state.isFirstHalf);
+  if (_state.isFirstHalf) {
+    uiShowHalftimeSplash().then(function() {
+      _state.isFirstHalf = false;
+      uiGenerateCards(handleCardClick);
+      outcomes.generate();
+    });
+  } else {
+    uiShowFullTimeSplash().then(function() {
+      init();
+    });
   }
-  uiGenerateCards(handleCardClick);
-  outcomes.generate();
-  console.log(_state.evaluating);
-  _state.isFirstHalf = false;
 }
 
 module.exports = engine;

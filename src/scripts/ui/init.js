@@ -10,8 +10,8 @@ module.exports = function init() {
 	var deferred = q.defer();
 
 	// Show available teams
-	$('#overlay').removeClass('overlay-hide');
 	prepareTeams();
+	$('#overlay').removeClass('overlay-hide');
 	$('#overlay .flag').on('click', setTeams);
 
 	// Tactic setup
@@ -19,12 +19,15 @@ module.exports = function init() {
 	$('#confirmTactic').on('click', setTactics);
 
 	// Coin toss
-	$('#pitch-overlay').removeClass('pitch-overlay-hidden');
-	$('#pitch-overlay .btn').on('click', function() {
+	$('#pitch-setup').removeClass('pitch-overlay-hidden');
+	$('#pitch-setup .btn').on('click', function() {
 		var playerStarts = !!random(0, 1);
-		$('#pitch-overlay').addClass('pitch-overlay-hidden');
+		$('#pitch-setup').addClass('pitch-overlay-hidden');
 		deferred.resolve(playerStarts);
 	});
+
+	// Commentary Init
+	$('#commentary p').text('Match game init. Pick coin side.').addClass('entered');
 
 	return deferred.promise;
 };

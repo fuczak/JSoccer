@@ -14,7 +14,7 @@ module.exports = function(index, outcome) {
 		   b.children[0].textContent = outcome;
 		   b.children[0].classList.add('entered');
 		   b.classList.remove('ramjet-hidden');
-		   deferred.resolve()
+		   deferred.resolve();
 		  },
 		  duration: 600,
 		  easing: ramjet.easeInOut

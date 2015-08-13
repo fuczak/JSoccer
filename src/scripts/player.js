@@ -25,7 +25,7 @@ function setTactics(formation) {
   _team.skill.midfield *= +helpers.getTacticCoef(pickedFormation[1]);
   _team.skill.attack *= +helpers.getTacticCoef(pickedFormation[2]);
   // Set default mentality
-  setMentality(2);
+  setMentality(1);
 }
 
 function setMentality(mentality) {
