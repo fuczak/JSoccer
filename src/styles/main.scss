@@ -184,7 +184,7 @@ header {
 	}
 }
 
-// Tactic options
+// Commentary bar
 .commentary-box {
 	@include box_shadow;
 	@include transition_delayed;
@@ -210,12 +210,16 @@ header {
 		}
 	}
 }
+
+// Sidebars
+
 .sidebar {
 	@include box_shadow;
 	background-color: $brand-success;
 	padding: 20px;
 	min-height: 500px;
 }
+
 .remaining {
 	@include box_shadow;
 	@include transition_short;
