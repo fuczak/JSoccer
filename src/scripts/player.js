@@ -13,6 +13,7 @@ var player = {
 
 function setTeam(selectedTeam) {
   _team = selectedTeam;
+  _team.energy = 100;
 }
 
 function getTeam() {
@@ -29,7 +30,7 @@ function setTactics(formation) {
 }
 
 function setMentality(mentality) {
-  _team.mentality = +helpers.getMentalityCoef(mentality);
+  _team.mentality = mentality;
 }
 
 function getMentality() {

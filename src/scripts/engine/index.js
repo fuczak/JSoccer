@@ -1,3 +1,4 @@
+var random = require('lodash/number/random');
 var evaluateOutcome = require('./evaluateOutcome');
 var uiInit = require('../ui/init');
 var outcomes = require('../outcomes');
@@ -5,6 +6,7 @@ var uiGenerateCards = require('../ui/generateCards');
 var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
+var uiUpdateEnergyBar = require('../ui/updateEnergyBar');
 var cardToCommentary = require('../ui/cardToCommentary');
 var uiBlockTacticButtons = require('../ui/blockTacticButtons');
 var player = require('../player');
@@ -20,9 +22,9 @@ var engine = {
 
 function init() {
   uiMakeCommentary('Let\'s see how the coin toss goes.');
-  uiInit().then(function(playerStarts) {
-    uiMakeCommentary('Someone will start the game.');
+  uiInit(makeSub, changeMentality).then(function(playerStarts) {
     outcomes.generate();
+    uiMakeCommentary('Someone will start the game.');
     uiGenerateCards(handleCardClick);
     _state = {
       player: player.getTeam(),
@@ -45,6 +47,8 @@ function handleCardClick(e) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, e);
     cardToCommentary(evaluated.index, evaluated.text).then(function() {
+      _state.player.energy -= evaluated.lostEnergy;
+      uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
       if (evaluated.isWhistle) return handleWhistle();
       if (!evaluated.shouldContinue) handleCardClick();
@@ -62,6 +66,16 @@ function handleCardClick(e) {
       });
     }, 1200);
   }
+}
+
+function makeSub() {
+  _state.player.energy += random(8, 15);
+  uiUpdateEnergyBar(_state.player.energy);
+}
+
+function changeMentality(value) {
+  _state.player.mentality = value;
+  console.log(_state.player.mentality);
 }
 
 function handleWhistle() {
