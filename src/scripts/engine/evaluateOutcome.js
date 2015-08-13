@@ -8,12 +8,11 @@ var uiCardNumber = require('../ui/cardNumber');
 var helpers = require('../helpers');
 
 module.exports = function(state, e) {
+
   // Prepare index to evaluate outcome
   var index = e === undefined ? undefined : e.target.id;
-  // Get current values
   var picked = outcomes.getOutcome(index);
-  var playerSkill = player.getTeam();
-  var cpuSkill = cpu.getTeam();
+
   var shouldContinue = true;
   var isWhistle = false;
 
@@ -54,7 +53,6 @@ module.exports = function(state, e) {
   }
   var helperText = picked.outcome.type;
   shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.'
-  // cardToCommentary(picked.index, helperText);
   return {
     shouldContinue: shouldContinue,
     isWhistle: isWhistle,

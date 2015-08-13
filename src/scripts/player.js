@@ -27,7 +27,7 @@ function setTactics(formation, mentality) {
 }
 
 function setMentality(mentality) {
-  _team.mentality = helpers.getMentalityCoef(mentality);
+  _team.mentality = +helpers.getMentalityCoef(mentality);
 }
 
 function getMentality() {
