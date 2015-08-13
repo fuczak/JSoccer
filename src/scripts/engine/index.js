@@ -6,6 +6,7 @@ var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
 var cardToCommentary = require('../ui/cardToCommentary');
+var uiBlockTacticButtons = require('../ui/blockTacticButtons');
 var player = require('../player');
 var cpu = require('../cpu');
 
@@ -49,16 +50,17 @@ function handleCardClick(e) {
       if (!evaluated.shouldContinue) handleCardClick();
     });
   } else {
-    // blockTacticButtons();
+    uiBlockTacticButtons();
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
       cardToCommentary(evaluated.index, evaluated.text).then(function() {
+        uiBlockTacticButtons();
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 10);
+    }, 1200);
   }
 }
 

@@ -11,9 +11,9 @@ module.exports = function() {
 		mentalityButtonGroup.attr('data-toggle', '');
 	}
 	$.each(mentalityButtonGroup.find('.btn'), function(i, e) {
-		$(e).toggleClass('disabled');		
+		$(e).toggleClass('disabled');
 	});
 	$.each(subButtonGroup.find('.btn'), function(i, e) {
 		$(e).toggleClass('disabled');
-	})
-}
+	});
+};
