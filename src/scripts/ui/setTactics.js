@@ -7,5 +7,5 @@ module.exports = function(e) {
 	var formation = $('#formation .active input').val();
 	player.setTactics(formation);
 	cpu.setTactics(formation);
-	$('#tacticSetup').addClass('tactic-hide');
+	$('#tacticSetup').addClass('main-splash-hide');
 };

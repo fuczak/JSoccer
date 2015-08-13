@@ -18,6 +18,7 @@ var engine = {
 };
 
 function init() {
+  uiMakeCommentary('Let\'s see how the coin toss goes.');
   uiInit().then(function(playerStarts) {
     uiMakeCommentary('Someone will start the game.');
     outcomes.generate();
@@ -57,12 +58,11 @@ function handleCardClick(e) {
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 1200);
+    }, 10);
   }
 }
 
 function handleWhistle() {
-  console.log(_state.isFirstHalf);
   if (_state.isFirstHalf) {
     uiShowHalftimeSplash().then(function() {
       _state.isFirstHalf = false;

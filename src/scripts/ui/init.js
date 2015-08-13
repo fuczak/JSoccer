@@ -4,6 +4,7 @@ var random = require('lodash/number/random');
 var prepareTeams = require('./prepareTeams');
 var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
+var cardNumber = require('./cardNumber');
 
 module.exports = function init() {
 
@@ -15,8 +16,11 @@ module.exports = function init() {
 	$('#overlay .flag').on('click', setTeams);
 
 	// Tactic setup
-	$('#tacticSetup').removeClass('tactic-hide');
+	$('#tacticSetup').removeClass('main-splash-hide');
 	$('#confirmTactic').on('click', setTactics);
+
+	// Sidebar setup
+	cardNumber.set([0, 0, 0, 0, 0]);
 
 	// Coin toss
 	$('#pitch-setup').removeClass('pitch-overlay-hidden');

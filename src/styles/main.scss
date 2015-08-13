@@ -148,7 +148,7 @@ header {
 }
 
 // Tactic setup
-.tactic-setup {
+.main-splash {
 	@include box_shadow;
 	@include transition;
 	background-color: darken($brand-success, 10%);
@@ -164,7 +164,7 @@ header {
 		color: #000;
 	}
 }
-.tactic-hide {
+.main-splash-hide {
 	transform: translate(0, -100%);
 }
 .btn-tactic {
