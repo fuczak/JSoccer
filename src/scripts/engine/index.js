@@ -8,7 +8,7 @@ var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
 var uiUpdateEnergyBar = require('../ui/updateEnergyBar');
 var cardToCommentary = require('../ui/cardToCommentary');
-var uiBlockTacticButtons = require('../ui/blockTacticButtons');
+var uiBlockInput = require('../ui/blockInput');
 var player = require('../player');
 var cpu = require('../cpu');
 
@@ -50,17 +50,16 @@ function handleCardClick(e) {
       _state.player.energy -= evaluated.lostEnergy;
       uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
-      console.log(_state.player.energy);
       if (evaluated.isWhistle) return handleWhistle();
       if (!evaluated.shouldContinue) handleCardClick();
     });
   } else {
-    uiBlockTacticButtons();
+    uiBlockInput();
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
       cardToCommentary(evaluated.index, evaluated.text).then(function() {
-        uiBlockTacticButtons();
+        uiBlockInput();
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();

@@ -219,6 +219,15 @@ header {
 	padding: 20px;
 	min-height: 500px;
 }
+.sidebar-block {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: none;
+	z-index: 300;
+}
 
 .remaining {
 	@include box_shadow;
