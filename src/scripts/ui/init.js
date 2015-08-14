@@ -36,9 +36,8 @@ module.exports = function init(makeSub, changeMentality) {
 	// Coin toss
 	$('#pitch-setup').removeClass('pitch-overlay-hidden');
 	$('#pitch-setup .btn').on('click', function() {
-		var playerStarts = !!random(0, 1);
 		$('#pitch-setup').addClass('pitch-overlay-hidden');
-		deferred.resolve(playerStarts);
+		deferred.resolve(!!random(0, 1));
 	});
 
 	return deferred.promise;

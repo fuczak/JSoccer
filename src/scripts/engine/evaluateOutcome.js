@@ -57,7 +57,7 @@ module.exports = function(state, e) {
     shouldContinue: shouldContinue,
     isWhistle: isWhistle,
     index: picked.index,
-    lostEnergy: random(5, 15),
+    lostEnergy: random(3, 10),
     text: helperText
   };
 };

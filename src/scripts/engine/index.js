@@ -50,6 +50,7 @@ function handleCardClick(e) {
       _state.player.energy -= evaluated.lostEnergy;
       uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
+      console.log(_state.player.energy);
       if (evaluated.isWhistle) return handleWhistle();
       if (!evaluated.shouldContinue) handleCardClick();
     });
@@ -68,9 +69,8 @@ function handleCardClick(e) {
   }
 }
 
-function makeSub() {
-  _state.player.energy += random(8, 15);
-  uiUpdateEnergyBar(_state.player.energy);
+function makeSub() {  
+  uiUpdateEnergyBar(_state.player.energy += random(8, 15));
 }
 
 function changeMentality(value) {
@@ -80,6 +80,7 @@ function changeMentality(value) {
 
 function handleWhistle() {
   if (_state.isFirstHalf) {
+    uiUpdateEnergyBar(_state.player.energy += random(25, 35));
     uiShowHalftimeSplash().then(function() {
       _state.isFirstHalf = false;
       uiGenerateCards(handleCardClick);
