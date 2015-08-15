@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     assign = require('lodash.assign'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync');
+    autoprefixer = require('gulp-autoprefixer');
 
 var customOpts = {
   entries: ['./src/scripts/main.js'],
@@ -24,6 +25,10 @@ gulp.task('sass', function () {
     outputStyle: 'compressed',
     includePaths: './bower_components/bootstrap-sass/assets/stylesheets'
   }).on('error', sass.logError))
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
   .pipe(gulp.dest('./tmp/styles'))
   .pipe(browserSync.reload({stream: true}));
 });
