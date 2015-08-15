@@ -1,7 +1,8 @@
+var $ = require('jquery');
 var ramjet = require('ramjet');
 var q = require('q');
 
-module.exports = function(index, outcome) {
+module.exports = function(index, type, text) {
 	var deferred = q.defer();
 	var a = document.getElementById(index);
 	var b = document.getElementById('commentary');
@@ -11,7 +12,7 @@ module.exports = function(index, outcome) {
 		b.classList.remove('ramjet-hidden');
 		ramjet.transform(a, b, {
 		  done: function() {
-		   b.children[0].textContent = outcome;
+		   b.children[0].textContent = text;
 		   b.children[0].classList.add('entered');
 		   b.classList.remove('ramjet-hidden');
 		   deferred.resolve();
@@ -19,7 +20,8 @@ module.exports = function(index, outcome) {
 		  duration: 600,
 		  easing: ramjet.easeInOut
 		});
-		a.classList.add('ramjet-hidden');
+		$('#' + index).addClass('flipped').find('.back').text(type);
+		// a.classList.add('ramjet-hidden');
 	}, 150);
 
 	return deferred.promise;

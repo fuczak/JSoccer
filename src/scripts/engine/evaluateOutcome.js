@@ -7,10 +7,10 @@ var uiCardNumber = require('../ui/cardNumber');
 // Experimental - simulate random outcomes
 var helpers = require('../helpers');
 
-module.exports = function(state, e) {
+module.exports = function(state, index) {
 
   // Prepare index to evaluate outcome
-  var index = e === undefined ? undefined : e.target.id;
+  // var index = e === undefined ? undefined : e.target.id;
   var picked = outcomes.getOutcome(index);
 
   var shouldContinue = true;
@@ -58,6 +58,7 @@ module.exports = function(state, e) {
     isWhistle: isWhistle,
     index: picked.index,
     lostEnergy: random(3, 10),
+    type: picked.outcome.type,
     text: helperText
   };
 };

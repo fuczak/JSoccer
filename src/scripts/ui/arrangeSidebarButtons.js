@@ -8,4 +8,4 @@ module.exports = function () {
 		$('.sidebar').find('.sidebar-btn').removeClass('btn-group-vertical').addClass('btn-group');
 		$('.remaining').css('display', 'inline-block');
 	}
-}
+};

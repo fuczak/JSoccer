@@ -22,9 +22,9 @@ var engine = {
 
 function init() {
   uiMakeCommentary('Let\'s see how the coin toss goes.');
-  uiInit(makeSub, changeMentality).then(function(playerStarts) {
+  uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
-    uiMakeCommentary('Someone will start the game.');
+    uiMakeCommentary('Player will start the game.');
     uiGenerateCards(handleCardClick);
     _state = {
       player: player.getTeam(),
@@ -38,14 +38,14 @@ function init() {
 
 }
 
-function handleCardClick(e) {
+function handleCardClick(index) {
   // Prevent player from clicking on card during cpu turn
   if (_state.evaluating) return;
   // If 'e' is passed as an argument it means it's a player turn
-  if (e) {
+  if (index) {
     _state.evaluating = true;
-    evaluated = evaluateOutcome(_state, e);
-    cardToCommentary(evaluated.index, evaluated.text).then(function() {
+    evaluated = evaluateOutcome(_state, index);
+    cardToCommentary(evaluated.index, evaluated.type, evaluated.text).then(function() {
       _state.player.energy -= evaluated.lostEnergy;
       uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
@@ -57,7 +57,7 @@ function handleCardClick(e) {
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
-      cardToCommentary(evaluated.index, evaluated.text).then(function() {
+      cardToCommentary(evaluated.index, evaluated.type, evaluated.text).then(function() {
         uiBlockInput();
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();

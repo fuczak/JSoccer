@@ -280,7 +280,11 @@ header {
 .pitch-overlay-hidden {
 	transform: translate(0, -175%);
 }
+.cardlist {
+	perspective: 800px;
+}
 .card {
+	@include transition;
 	border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
 	// background-image: url('../images/soccer66.png');
@@ -290,8 +294,9 @@ header {
 	min-height: 125px;
 	text-align: center;
 	position: relative;
-	transition: 300ms transform ease-in-out, 400ms opacity ease-out;
+	transition: 600ms transform ease-in-out, 400ms opacity ease-out;
 	transform: translate(0, 0);
+	transform-style: preserve-3d;
 	opacity: 1;
 	&.card-hidden {
 		transform: translate(0, 50%);
@@ -304,11 +309,21 @@ header {
 		background-color: darken($brand-info, 5%);
 		cursor: pointer;
 	}
+	&.flipped {
+		transform: rotateY(180deg);
+	}
 	img {
 		margin: 0 auto;
 		position: relative;
 		top: 50%;
 		transform: translateY(-50%);
+	}
+	.front, .back {
+		color: #000;
+		backface-visibility: hidden;
+	}
+	.back {
+		transform: rotateY(180deg);
 	}
 }
 
