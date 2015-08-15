@@ -34,7 +34,6 @@ function init() {
       isFirstHalf: true
     };
     console.log(_state);
-    if (!playerStarts) handleCardClick();
   });
 
 }
@@ -68,7 +67,7 @@ function handleCardClick(e) {
   }
 }
 
-function makeSub() {  
+function makeSub() {
   uiUpdateEnergyBar(_state.player.energy += random(8, 15));
 }
 

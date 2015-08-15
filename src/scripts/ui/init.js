@@ -37,7 +37,7 @@ module.exports = function init(makeSub, changeMentality) {
 	$('#pitch-setup').removeClass('pitch-overlay-hidden');
 	$('#pitch-setup .btn').on('click', function() {
 		$('#pitch-setup').addClass('pitch-overlay-hidden');
-		deferred.resolve(!!random(0, 1));
+		deferred.resolve();
 	});
 
 	return deferred.promise;
