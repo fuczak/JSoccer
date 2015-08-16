@@ -17,12 +17,20 @@ $brand-info: #A0CFD3;
 	transition: 300ms all ease-in-out;
 }
 
+@mixin transition_long {
+	transition: 600ms all ease-in-out;
+}
+
 @mixin transition_short {
 	transition: 150ms all ease-in-out;
 }
 
 @mixin transition_delayed {
 	transition: 300ms all 150ms ease-in-out;
+}
+
+@mixin transition_long_delayed {
+	transition: 600ms all 200ms ease-in-out;
 }
 
 @mixin card_text {
@@ -155,7 +163,7 @@ header {
 // Tactic setup
 .main-splash {
 	@include box_shadow;
-	@include transition;
+	@include transition_long_delayed;
 	background-color: darken($brand-success, 10%);
 	color: #fff;
 	position: absolute;
@@ -263,7 +271,7 @@ header {
 	}
 }
 .pitch-overlay {
-	@include transition;
+	@include transition_long;
 	@include box_shadow;
 	background-color: $brand-success;
 	padding: 20px;
@@ -359,6 +367,22 @@ header {
 		}
 		&.Tackle {
 			background-color: $brand-danger;
+		}
+		// Injury Offside Penalty Red Card Whistle
+		&.Injury {
+			background-color: darken($brand-warning, 3%);
+		}
+		&.Offside {
+			background-color: darken($brand-warning, 6%);
+		}
+		&.Penalty {
+			background-color: darken($brand-warning, 9%);
+		}
+		&.Red {
+			background-color: darken($brand-warning, 12%);
+		}
+		&.Whistle {
+			background-color: darken($brand-warning, 15%);
 		}
 	}
 }
