@@ -22,6 +22,7 @@ var engine = {
 };
 
 function init() {
+  uiBlockInput();
   uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
     uiGenerateCards(handleCardClick);
@@ -34,7 +35,7 @@ function init() {
     };
     uiMakeCommentary(_state.player.name + ' will start the game (by clicking on one of the cards).');
     uiChangeFlag(_state.player.flag);
-    console.log(_state);
+    uiBlockInput();
   });
 
 }
@@ -76,7 +77,6 @@ function makeSub() {
 
 function changeMentality(value) {
   _state.player.mentality = value;
-  console.log(_state.player.mentality);
 }
 
 function handleWhistle() {

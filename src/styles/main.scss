@@ -220,14 +220,13 @@ header {
 	min-height: 500px;
 }
 .sidebar-block {
-	@include transition;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: #ddd;
-	opacity: 0.5;
+	background: #fff;
+	opacity: 0.2;
 	z-index: 300;
 }
 
