@@ -7,6 +7,7 @@ var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
 var uiShowFullTimeSplash = require('../ui/showFulltimeSplash');
 var uiUpdateEnergyBar = require('../ui/updateEnergyBar');
+var uiChangeFlag = require('../ui/changeFlag');
 var cardToCommentary = require('../ui/cardToCommentary');
 var uiBlockInput = require('../ui/blockInput');
 var player = require('../player');
@@ -33,6 +34,7 @@ function init() {
       shouldContinue: false,
       isFirstHalf: true
     };
+    uiChangeFlag(_state.player.flag);
     console.log(_state);
   });
 
@@ -54,11 +56,13 @@ function handleCardClick(index) {
     });
   } else {
     uiBlockInput();
+    uiChangeFlag(_state.cpu.flag);
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
       cardToCommentary(evaluated.index, evaluated.type, evaluated.text).then(function() {
         uiBlockInput();
+        uiChangeFlag(_state.player.flag);
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
@@ -80,9 +84,11 @@ function handleWhistle() {
   if (_state.isFirstHalf) {
     uiUpdateEnergyBar(_state.player.energy += random(25, 35));
     uiShowHalftimeSplash().then(function() {
+      uiChangeFlag(_state.cpu.flag);
       _state.isFirstHalf = false;
       uiGenerateCards(handleCardClick);
       outcomes.generate();
+      handleCardClick();
     });
   } else {
     uiShowFullTimeSplash().then(function() {

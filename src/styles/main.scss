@@ -281,16 +281,13 @@ header {
 	transform: translate(0, -175%);
 }
 .cardlist {
-	perspective: 800px;
+	perspective: 1500px;
 }
 .card {
 	@include transition;
-	border: 1px solid rgba(0, 0, 0, 0.16);
+	@include box_shadow;
+	// border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
-	// background-image: url('../images/soccer66.png');
-	// background-size: 40px;
-	// background-position: center;
-	// background-repeat: no-repeat;
 	min-height: 125px;
 	text-align: center;
 	position: relative;
@@ -321,9 +318,39 @@ header {
 	.front, .back {
 		color: #000;
 		backface-visibility: hidden;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.front {
+		background-image: url('../images/soccer_ball.png');
+		background-size: 40px;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 	.back {
+		@include box_shadow;
 		transform: rotateY(180deg);
+		color: #fff;
+		background-color: $brand-warning;
+		padding-top: 50%;
+		p {
+			margin: 0;
+		}
+		&.Goal {
+			background-color: $brand-success;
+		}
+		&.Chance {
+			background-color: $brand-primary;
+		}
+		&.Pass {
+			background-color: $brand-info;
+		}
+		&.Tackle {
+			background-color: $brand-danger;
+		}
 	}
 }
 

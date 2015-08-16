@@ -6,7 +6,7 @@ module.exports = function(handleCardClick) {
 	var cardContainer = $('#pitch .row');
 	cardContainer.html('');
 	for (var i = 0; i < 24; i++) {
-	  cardContainer.append('<div class="col-xs-3 col-md-2 card card-hidden" id="' + i + '"><div class="front">JSoccer</div><div class="back"></div></div>');
+	  cardContainer.append('<div class="col-xs-3 col-md-2 card card-hidden" id="' + i + '"><div class="front"></div><div class="back"></div></div>');
 	}
 	$.each(cardContainer.find('.card'), function(i, e) {
 		setTimeout(function() {
