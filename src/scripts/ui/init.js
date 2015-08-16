@@ -23,6 +23,7 @@ module.exports = function init(makeSub, changeMentality) {
 	$('.progress-bar').removeClass().addClass('progress-bar progress-bar-info').css('width', '100%');
 	$('#subButtons .btn').removeClass('disabled').prop('disabled', false);
 	$('#subButtons .btn').on('click', function() {
+		if ($(this).hasClass('disabled')) return;
 		makeSub();
 		$(this).addClass('disabled');
 	});
