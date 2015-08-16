@@ -197,7 +197,6 @@ header {
 	background-color: #fff;
 	height: 80px;
 	overflow: hidden;
-	padding: 10px;
 	p {
 		@include transition_short;
 		// font-size: 16px; //would be a good idea to use media queries here
@@ -276,6 +275,16 @@ header {
 	min-height: 500px;
 	transform: translate(0, 0);
 	z-index: 300;
+}
+.pitch-block {
+	background-color: #fff;
+	opacity: 0.2;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 250;
 }
 .pitch-overlay-hidden {
 	transform: translate(0, -175%);
