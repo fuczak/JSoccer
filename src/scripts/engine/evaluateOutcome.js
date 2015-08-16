@@ -52,7 +52,7 @@ module.exports = function(state, index) {
       break;
   }
   var helperText = picked.outcome.type;
-  shouldContinue ? helperText += '. The action continues.' : helperText += '. Switch Priority.';
+  helperText += shouldContinue ? '. The action continues.' : '. Switch Priority.';
   return {
     shouldContinue: shouldContinue,
     isWhistle: isWhistle,
