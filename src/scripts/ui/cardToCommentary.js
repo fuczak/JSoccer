@@ -20,7 +20,7 @@ module.exports = function(index, type, text) {
 		  duration: 600,
 		  easing: ramjet.easeInOut
 		});
-		$('#' + index).addClass('flipped').find('.back').text(type);
+		$('#' + index).addClass('flipped').find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');
 		// a.classList.add('ramjet-hidden');
 	}, 150);
 
