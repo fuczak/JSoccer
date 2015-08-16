@@ -11,7 +11,7 @@ var outcomes = {
 };
 
 function generate() {
-  _outcomeArray = []
+  _outcomeArray = [];
   // Prepare array for ui painting
   var outcomesForUi = [0, 0, 0, 0, 0];
   // First, add between one and two Whistle events

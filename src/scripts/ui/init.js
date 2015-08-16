@@ -16,7 +16,6 @@ module.exports = function init(makeSub, changeMentality) {
 	$('#overlay .flag').on('click', setTeams);
 
 	// Tactic setup
-	$('#tacticSetup').removeClass('main-splash-hide');
 	$('#confirmTactic').on('click', setTactics);
 
 	// Sidebar tactics setup
@@ -36,7 +35,7 @@ module.exports = function init(makeSub, changeMentality) {
 
 	// Coin toss
 	$('#pitch-setup').removeClass('pitch-overlay-hidden');
-	$('#pitch-setup .btn').on('click', function() {
+	$('#confirmTactic').on('click', function() {
 		$('#pitch-setup').addClass('pitch-overlay-hidden');
 		deferred.resolve();
 	});

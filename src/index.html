@@ -17,7 +17,9 @@
     <section class="overlay" id="overlay">
       <h1 itemprop="name">Welcome to JSoccer</h1>
       <br>
-      <p itemprop="description">Pick your team and let's play some soccer.</p>
+      <p itemprop="description">The game which lets you play a soccer match by picking cards.</p>
+      <br>
+      <p>Pick your team and let's play some soccer.</p>
       <div class="container-fluid">
         <div class="row teamlist" id="teamlist">
           <!-- <div class="col-xs-2 flag text-center">
@@ -40,43 +42,6 @@
         </div>
       </div>
     </header>
-    <section class="main-splash" id="tacticSetup">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="text-center">Before you begin the match you need to set up a formation.</h2>
-            <hr>
-            <form class="form">
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <h4>Formation</h4>
-                </div>
-                <div class="panel-body text-center">
-                  <div class="btn-group" data-toggle="buttons" id="formation">
-                    <label class="btn btn-info btn-tactic active">
-                      <input type="radio" value=0 checked> 5-3-2
-                    </label>
-                    <label class="btn btn-info btn-tactic">
-                      <input type="radio" value=1> 4-4-2
-                    </label>
-                    <label class="btn btn-info btn-tactic">
-                      <input type="radio" value=2> 4-3-3
-                    </label>
-                    <label class="btn btn-info btn-tactic">
-                      <input type="radio" value=3> 3-5-2
-                    </label>
-                    <label class="btn  btn-info btn-tactic">
-                      <input type="radio" value=4> 3-4-3
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-danger btn-tactic btn-lg btn-block" id="confirmTactic">Confirm tactic</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="main-splash main-splash-hide" id="fulltime">
       <div class="container">
         <div class="row">
@@ -100,7 +65,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 commentary" id="commentary">
-            <p class="entered"></p>
+            <p class="entered">Hello, this is <a href="https://twitter.com/fuczak">Damian Prus</a> and I will be your commentator today.</p>
           </div>
         </div>
       </div>
@@ -138,13 +103,32 @@
           </div>
           <div class="col-md-8" id="pitch">
             <div class="pitch-overlay text-center" id="pitch-setup">
-              <h2>Choose a coin side.</h2>
-              <button class="btn btn-warning btn-tactic btn-lg">Heads</button>
-              <button class="btn btn-danger btn-tactic btn-lg">Tails</button>
+              <h2>Before you start the match you need to pick a formation.</h2>
+              <div class="btn-group" data-toggle="buttons" id="formation">
+                <label class="btn btn-info btn-tactic active">
+                  <input type="radio" value=0 checked> 5-3-2
+                </label>
+                <label class="btn btn-info btn-tactic">
+                  <input type="radio" value=1> 4-4-2
+                </label>
+                <label class="btn btn-info btn-tactic">
+                  <input type="radio" value=2> 4-3-3
+                </label>
+                <label class="btn btn-info btn-tactic">
+                  <input type="radio" value=3> 3-5-2
+                </label>
+                <label class="btn  btn-info btn-tactic">
+                  <input type="radio" value=4> 3-4-3
+                </label>
+              </div>
+              <hr>
+              <button class="btn btn-block btn-danger btn-tactic" id="confirmTactic">Start the match!</button>
             </div>
             <div class="pitch-overlay pitch-overlay-hidden text-center" id="pitch-halftime">
               <h2>Press the button below to start second half.</h2>
-              <button class="btn btn-danger btn-tactic btn-lg">I'm ready!</button>
+              <p>Be careful though, your opponent will kick-off right away!</p>
+              <hr>
+              <button class="btn btn-block btn-danger btn-tactic">I'm ready!</button>
             </div>
             <div class="row cardlist">
             <!-- Populated by JS -->

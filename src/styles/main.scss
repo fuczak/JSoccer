@@ -267,7 +267,8 @@ header {
 .pitch-overlay {
 	@include transition;
 	@include box_shadow;
-	background-color: $brand-info;
+	background-color: $brand-success;
+	padding: 20px;
 	position: absolute;
 	top: 0;
 	right: 0;

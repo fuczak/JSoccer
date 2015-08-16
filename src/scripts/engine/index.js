@@ -22,10 +22,8 @@ var engine = {
 };
 
 function init() {
-  uiMakeCommentary('Let\'s see how the coin toss goes.');
   uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
-    uiMakeCommentary('Player will start the game.');
     uiGenerateCards(handleCardClick);
     _state = {
       player: player.getTeam(),
@@ -34,6 +32,7 @@ function init() {
       shouldContinue: false,
       isFirstHalf: true
     };
+    uiMakeCommentary(_state.player.name + ' will start the game (by clicking on one of the cards).');
     uiChangeFlag(_state.player.flag);
     console.log(_state);
   });
