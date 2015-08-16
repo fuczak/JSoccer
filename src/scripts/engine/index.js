@@ -33,7 +33,7 @@ function init() {
       shouldContinue: false,
       isFirstHalf: true
     };
-    uiMakeCommentary(_state.player.name + ' will start the game (by clicking on one of the cards).');
+    uiMakeCommentary(_state.player.name + ' will start the game (by clicking on one of the cards). Tip: Flags on the cards indicate whose turn it is.');
     uiChangeFlag(_state.player.flag);
     uiBlockInput();
   });
