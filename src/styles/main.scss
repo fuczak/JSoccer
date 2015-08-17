@@ -300,6 +300,7 @@ header {
 	transform: translate(0, -175%);
 }
 .card {
+	will-change: transform;
 	// @include transition;
 	@include box_shadow;
 	// border: 1px solid rgba(0, 0, 0, 0.16);
@@ -309,9 +310,9 @@ header {
 	transition: 600ms transform ease-in-out, 400ms opacity ease-out;
 	position: relative;
 	opacity: 1;
-	&.card-hidden {		
-		transform: translate(0, 50%);		
-		opacity: 0;		
+	&.card-hidden {
+		transform: translate(0, 50%);
+		opacity: 0;
 	}
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
@@ -347,8 +348,8 @@ header {
 			@include transition_short;
 			opacity: 0;
 			transform: translateY(0);
-			&.entered {	
-				transform: translateY(-50%);			
+			&.entered {
+				transform: translateY(-50%);
 				opacity: 1;
 			}
 		}
