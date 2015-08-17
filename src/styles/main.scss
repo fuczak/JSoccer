@@ -94,7 +94,8 @@ h1 {
 // Overlay
 
 .overlay {
-	@include transition;
+	// @include transition;
+	transition: 300ms transform ease-in-out;
 	position: absolute;
 	overflow-y: auto;
 	top: 0;
@@ -111,8 +112,7 @@ h1 {
 }
 
 .overlay-hide {
-	position: fixed;
-	transform: translate(0, -100%);
+	transform: translate3D(0, -100%, 0);
 }
 // Flags
 .flag {
@@ -163,7 +163,7 @@ header {
 // Tactic setup
 .main-splash {
 	@include box_shadow;
-	@include transition_long_delayed;
+	@include transition;
 	background-color: darken($brand-success, 10%);
 	color: #fff;
 	position: absolute;
@@ -271,7 +271,7 @@ header {
 	}
 }
 .pitch-overlay {
-	@include transition_long;
+	@include transition;
 	@include box_shadow;
 	background-color: $brand-success;
 	padding: 20px;
@@ -305,26 +305,16 @@ header {
 	@include box_shadow;
 	// border: 1px solid rgba(0, 0, 0, 0.16);
 	background-color: #fff;
-	min-height: 125px;
+	min-height: 150px;
 	text-align: center;
 	position: relative;
-	transition: 600ms transform ease-in-out, 400ms opacity ease-out;
-	transform: translate(0, 0);
-	transform-style: preserve-3d;
 	opacity: 1;
-	&.card-hidden {
-		transform: translate(0, 50%);
-		opacity: 0;
-	}
 	&:nth-child(2n) {
 		background-color: darken(#fff, 2%);
 	}
 	&:hover {
 		background-color: darken($brand-info, 5%);
 		cursor: pointer;
-	}
-	&.flipped {
-		transform: rotateY(180deg);
 	}
 	img {
 		margin: 0 auto;
@@ -334,7 +324,6 @@ header {
 	}
 	.front, .back {
 		color: #000;
-		backface-visibility: hidden;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -342,19 +331,22 @@ header {
 		left: 0;
 	}
 	.front {
-		background-image: url('../images/soccer_ball.png');
+		@include transition;
 		background-size: 40px;
 		background-position: center;
 		background-repeat: no-repeat;
 	}
 	.back {
-		@include box_shadow;
-		transform: rotateY(180deg);
+		padding-top: 75px;
 		color: #fff;
-		background-color: $brand-warning;
-		padding-top: 50%;
 		p {
-			margin: 0;
+			@include transition_short;
+			opacity: 0;
+			transform: translateY(0);
+			&.entered {	
+				transform: translateY(-50%);			
+				opacity: 1;
+			}
 		}
 		&.Goal {
 			background-color: $brand-success;
@@ -368,7 +360,6 @@ header {
 		&.Tackle {
 			background-color: $brand-danger;
 		}
-		// Injury Offside Penalty Red Card Whistle
 		&.Injury {
 			background-color: darken($brand-warning, 3%);
 		}
