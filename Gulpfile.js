@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     assign = require('lodash.assign'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    del = require('del');
 
 var customOpts = {
   entries: ['./src/scripts/main.js'],
@@ -57,7 +58,11 @@ gulp.task('images', function() {
   .pipe(gulp.dest('./tmp/images'));
 });
 
-gulp.task('serve', ['html', 'sass', 'browserify', 'images'], function() {
+gulp.task('clean', function() {
+  del(['./tmp']);
+});
+
+gulp.task('serve', ['clean', 'html', 'sass', 'browserify', 'images'], function() {
   browserSync({
     server: './tmp'
   });
