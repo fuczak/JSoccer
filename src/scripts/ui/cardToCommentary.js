@@ -20,11 +20,11 @@ module.exports = function(index, type, text) {
 		  duration: 400,
 		  easing: ramjet.easeInOut
 		});
-		$('#' + index).find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');
 		$('#' + index).find('.front').addClass('ramjet-hidden');
-		setTimeout(function() {
-			$('#' + index).find('p').addClass('entered');
-		}, 150);
+	}, 150);
+	$('#' + index).find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');		
+	setTimeout(function() {
+		$('#' + index).find('p').addClass('entered');
 	}, 150);
 
 	return deferred.promise;
