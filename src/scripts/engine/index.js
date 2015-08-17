@@ -67,7 +67,7 @@ function handleCardClick(index) {
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 1200);
+    }, 800);
   }
 }
 

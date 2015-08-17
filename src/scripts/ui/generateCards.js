@@ -15,14 +15,14 @@ module.exports = function(handleCardClick) {
 	});
 	$('.card').on('click', function() {
 		// Return if card has been already clicked
-		if ($(this).hasClass('flipped')) return;
+		if ($(this).find('.front').hasClass('ramjet-hidden')) return;
 		// Respond to user clicks only after one second since last click
 		if (!animating) {
 			animating = true;
 			handleCardClick($(this).prop('id'));
 			setTimeout(function() {
 				animating = false;
-			}, 1000);
+			}, 400);
 		}
 	});
 };
