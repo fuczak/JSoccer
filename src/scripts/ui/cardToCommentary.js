@@ -17,14 +17,14 @@ module.exports = function(index, type, text) {
 		   b.classList.remove('ramjet-hidden');		   
 		   deferred.resolve();
 		  },
-		  duration: 600,
+		  duration: 400,
 		  easing: ramjet.easeInOut
 		});
 		$('#' + index).find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');
 		$('#' + index).find('.front').addClass('ramjet-hidden');
 		setTimeout(function() {
 			$('#' + index).find('p').addClass('entered');
-		}, 200);
+		}, 150);
 	}, 150);
 
 	return deferred.promise;

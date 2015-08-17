@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     assign = require('lodash.assign'),
     imagemin = require('gulp-imagemin'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer');
 
 var customOpts = {
