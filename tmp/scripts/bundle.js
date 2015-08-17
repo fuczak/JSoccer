@@ -16573,7 +16573,7 @@ function handleWhistle() {
 
 module.exports = engine;
 
-},{"../cpu":68,"../outcomes":74,"../player":75,"../ui/blockInput":78,"../ui/cardToCommentary":80,"../ui/changeFlag":81,"../ui/generateCards":82,"../ui/init":83,"../ui/makeCommentary":85,"../ui/showFulltimeSplash":90,"../ui/showHalftimeSplash":91,"../ui/updateEnergyBar":92,"./evaluateOutcome":70,"lodash/number/random":59}],72:[function(require,module,exports){
+},{"../cpu":68,"../outcomes":74,"../player":75,"../ui/blockInput":78,"../ui/cardToCommentary":80,"../ui/changeFlag":81,"../ui/generateCards":82,"../ui/init":83,"../ui/makeCommentary":84,"../ui/showFulltimeSplash":89,"../ui/showHalftimeSplash":90,"../ui/updateEnergyBar":91,"./evaluateOutcome":70,"lodash/number/random":59}],72:[function(require,module,exports){
 var $ = require("./..\\..\\bower_components\\jquery\\dist\\jquery.js");
 
 var helpers = {
@@ -16797,13 +16797,12 @@ module.exports = cardNumber;
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var ramjet = require('ramjet');
 var q = require('q');
-require('./jquery.quickflip.min');
 
 module.exports = function(index, type, text) {
 	var deferred = q.defer();
 	var a = document.getElementById(index);
 	var b = document.getElementById('commentary');
-	b.children[0].classList.remove('entered');	
+	b.children[0].classList.remove('entered');
 	setTimeout(function() {
 		b.children[0].textContent = '';
 		b.classList.remove('ramjet-hidden');
@@ -16819,16 +16818,16 @@ module.exports = function(index, type, text) {
 		});
 		$('#' + index).addClass('flipped').find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');
 		// a.classList.add('ramjet-hidden');
-	}, 0);
+	}, 150);
 
 	return deferred.promise;
 };
 
-},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./jquery.quickflip.min":84,"q":66,"ramjet":67}],81:[function(require,module,exports){
+},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"q":66,"ramjet":67}],81:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 
 module.exports = function(flag) {
-  // $('.card .front').css('background-image', 'url("images/flags/' + flag + '.png")');
+  $('.card .front').css('background-image', 'url("images/flags/' + flag + '.png")');
 };
 
 },{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2}],82:[function(require,module,exports){
@@ -16907,18 +16906,7 @@ module.exports = function init(makeSub, changeMentality) {
 	return deferred.promise;
 };
 
-},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./cardNumber":79,"./prepareTeams":87,"./setTactics":88,"./setTeams":89,"lodash/number/random":59,"q":66}],84:[function(require,module,exports){
-/*
- * jQuery QuickFlip v2.1.1
- * http://jonraasch.com/blog/quickflip-2-jquery-plugin
- *
- * Copyright (c) 2009 Jon Raasch (http://jonraasch.com/)
- * Licensed under the FreeBSD License:
- * http://dev.jonraasch.com/quickflip/docs#licensing
- *
- */
-(function(c){var a=false,b=null;c.quickFlip={wrappers:[],opts:[],objs:[],init:function(d,f){var d=d||{};d.closeSpeed=d.closeSpeed||180;d.openSpeed=d.openSpeed||120;d.ctaSelector=d.ctaSelector||".quickFlipCta";d.refresh=d.refresh||a;d.easing=d.easing||"swing";d.noResize=d.noResize||a;d.vertical=d.vertical||a;var g=typeof(f)!="undefined"?c(f):c(".quickFlip"),h=g.children();if(g.css("position")=="static"){g.css("position","relative")}var e=c.quickFlip.wrappers.length;h.each(function(i){var k=c(this);if(d.ctaSelector){k.find(d.ctaSelector).click(function(j){j.preventDefault();c.quickFlip.flip(e)})}if(i){k.hide()}});c.quickFlip.opts.push(d);c.quickFlip.objs.push({$box:c(g),$kids:c(h)});c.quickFlip.build(e);if(!d.noResize){c(window).resize(function(){for(var j=0;j<c.quickFlip.wrappers.length;j++){c.quickFlip.removeFlipDivs(j);c.quickFlip.build(j)}})}},build:function(f,h){c.quickFlip.opts[f].panelWidth=c.quickFlip.opts[f].panelWidth||c.quickFlip.objs[f].$box.width();c.quickFlip.opts[f].panelHeight=c.quickFlip.opts[f].panelHeight||c.quickFlip.objs[f].$box.height();var e=c.quickFlip.opts[f],g={wrapper:c.quickFlip.objs[f].$box,index:f,half:parseInt((e.vertical?e.panelHeight:e.panelWidth)/2),panels:[],flipDivs:[],flipDivCols:[],currPanel:h||0,options:e};c.quickFlip.objs[f].$kids.each(function(k){var i=c(this).css({position:"absolute",top:0,left:0,margin:0,padding:0,width:e.panelWidth,height:e.panelHeight});g.panels[k]=i;var l=d(g,k).hide().appendTo(g.wrapper);g.flipDivs[k]=l;g.flipDivCols[k]=l.children()});c.quickFlip.wrappers[f]=g;function d(i,p){function o(q,t){var r=c("<div></div>"),s=q.panels[t].clone().show();r.css(l);r.html(s);return r}var n=c("<div></div>"),j=i.panels[p].html(),l={width:e.vertical?e.panelWidth:i.half,height:e.vertical?i.half:e.panelHeight,position:"absolute",overflow:"hidden",margin:0,padding:0};if(e.vertical){l.left=0}else{l.top=0}var m=c(o(i,p)).appendTo(n),k=c(o(i,p)).appendTo(n);if(e.vertical){m.css("bottom",i.half);k.css("top",i.half);k.children().css({top:b,bottom:0})}else{m.css("right",i.half);k.css("left",i.half);k.children().css({right:0,left:"auto"})}return n}},flip:function(g,q,l,r){function h(j,i){j=j||{};i=i||{};for(opt in j){i[opt]=j[opt]}return i}if(typeof g!="number"||typeof c.quickFlip.wrappers[g]=="undefined"){return}var n=c.quickFlip.wrappers[g],f=n.currPanel,e=(typeof(q)!="undefined"&&q!=b)?q:(n.panels.length>f+1)?f+1:0;n.currPanel=e,l=(typeof(l)!="undefined"&&l!=b)?l:1;r=h(r,c.quickFlip.opts[g]);n.panels[f].hide();if(r.refresh){c.quickFlip.removeFlipDivs(g);c.quickFlip.build(g,e);n=c.quickFlip.wrappers[g]}n.flipDivs[f].show();var p=0,o=0,d=r.vertical?{height:0}:{width:0},m=r.vertical?{height:n.half}:{width:n.half};n.flipDivCols[f].animate(d,r.closeSpeed,r.easing,function(){if(!p){p++}else{n.flipDivs[e].show();n.flipDivCols[e].css(d);n.flipDivCols[e].animate(m,r.openSpeed,r.easing,function(){if(!o){o++}else{n.flipDivs[e].hide();n.panels[e].show();switch(l){case 0:case -1:c.quickFlip.flip(g,b,-1);break;case 1:break;default:c.quickFlip.flip(g,b,l-1);break}}})}})},removeFlipDivs:function(e){for(var d=0;d<c.quickFlip.wrappers[e].flipDivs.length;d++){c.quickFlip.wrappers[e].flipDivs[d].remove()}}};c.fn.quickFlip=function(d){this.each(function(){new c.quickFlip.init(d,this)});return this};c.fn.whichQuickFlip=function(){function f(j,h){if(!j||!h||!j.length||!h.length||j.length!=h.length){return a}for(var g=0;g<j.length;g++){if(j[g]!==h[g]){return a}}return true}var d=b;for(var e=0;e<c.quickFlip.wrappers.length;e++){if(f(this,c(c.quickFlip.wrappers[e].wrapper))){d=e}}return d};c.fn.quickFlipper=function(d,f,e){this.each(function(){var h=c(this),g=h.whichQuickFlip();if(g==b){h.quickFlip(d);g=h.whichQuickFlip()}c.quickFlip.flip(g,f,e,d)})}})(jQuery);
-},{}],85:[function(require,module,exports){
+},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./cardNumber":79,"./prepareTeams":86,"./setTactics":87,"./setTeams":88,"lodash/number/random":59,"q":66}],84:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 
 module.exports = function(commentary) {
@@ -16928,7 +16916,7 @@ module.exports = function(commentary) {
   }, 300);
 };
 
-},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2}],86:[function(require,module,exports){
+},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2}],85:[function(require,module,exports){
 module.exports = function(e) {
 	var node = document.createElement('div');
 	var image = document.createElement('img');
@@ -16941,7 +16929,7 @@ module.exports = function(e) {
 	return node;
 };
 
-},{}],87:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var paintTeamNode = require('./paintTeamNode');
 var teams = require('../teams');
@@ -16954,7 +16942,7 @@ module.exports = function() {
 	});
 };
 
-},{"../teams":76,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./paintTeamNode":86}],88:[function(require,module,exports){
+},{"../teams":76,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./paintTeamNode":85}],87:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var player = require('../player');
 var cpu = require('../cpu');
@@ -16967,7 +16955,7 @@ module.exports = function(e) {
 	$('#tacticSetup').addClass('main-splash-hide');
 };
 
-},{"../cpu":68,"../player":75,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2}],89:[function(require,module,exports){
+},{"../cpu":68,"../player":75,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2}],88:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var teams = require('../teams');
 var player = require('../player');
@@ -16993,7 +16981,7 @@ module.exports = function(e) {
 	// Move overlay out of the way
 	$('#overlay').addClass('overlay-hide');
 }
-},{"../cpu":68,"../player":75,"../teams":76,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./paintTeamNode":86}],90:[function(require,module,exports){
+},{"../cpu":68,"../player":75,"../teams":76,"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"./paintTeamNode":85}],89:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var q = require('q');
 
@@ -17009,7 +16997,7 @@ module.exports = function() {
   return deferred.promise;
 };
 
-},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"q":66}],91:[function(require,module,exports){
+},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"q":66}],90:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 var q = require('q');
 
@@ -17025,7 +17013,7 @@ module.exports = function() {
   return deferred.promise;
 };
 
-},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"q":66}],92:[function(require,module,exports){
+},{"./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js":2,"q":66}],91:[function(require,module,exports){
 var $ = require("./..\\..\\..\\bower_components\\jquery\\dist\\jquery.js");
 
 module.exports = function(value) {
