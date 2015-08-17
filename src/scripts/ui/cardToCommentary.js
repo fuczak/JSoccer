@@ -1,10 +1,12 @@
 var $ = require('jquery');
 var ramjet = require('ramjet');
 var q = require('q');
+var getCommentaryText = require('./getCommentaryText');
 
-module.exports = function(index, type, text) {
+module.exports = function(outcome, attackingTeam, defendingTeam) {
+	var text = getCommentaryText(outcome.type, outcome.isSuccess, outcome.shouldContinue, attackingTeam, defendingTeam);
 	var deferred = q.defer();
-	var a = $('#' + index).find('.front')[0];
+	var a = $('#' + outcome.index).find('.front')[0];
 	var b = document.getElementById('commentary');
 	b.children[0].classList.remove('entered');
 	setTimeout(function() {
@@ -14,18 +16,18 @@ module.exports = function(index, type, text) {
 		  done: function() {
 		   b.children[0].textContent = text;
 		   b.children[0].classList.add('entered');
-		   b.classList.remove('ramjet-hidden');		   
+		   b.classList.remove('ramjet-hidden');
 		   deferred.resolve();
 		  },
 		  duration: 400,
 		  easing: ramjet.easeInOut
 		});
-		$('#' + index).find('.front').addClass('ramjet-hidden');
+		$('#' + outcome.index).find('.front').addClass('ramjet-hidden');
 	}, 150);
-	$('#' + index).find('.back').addClass(type).append('<p class="text-center">' + type + '</p>');		
+	$('#' + outcome.index).find('.back').addClass(outcome.type).append('<p class="text-center">' + outcome.type + '</p>');
 	setTimeout(function() {
-		$('#' + index).find('p').addClass('entered');
-	}, 150);
+		$('#' + outcome.index).find('p').addClass('entered');
+	}, 300);
 
 	return deferred.promise;
 };

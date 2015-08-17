@@ -23,6 +23,7 @@ var engine = {
 
 function init() {
   uiBlockInput();
+  uiMakeCommentary('Hello and welcome!');
   uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
     uiGenerateCards(handleCardClick);
@@ -47,7 +48,7 @@ function handleCardClick(index) {
   if (index) {
     _state.evaluating = true;
     evaluated = evaluateOutcome(_state, index);
-    cardToCommentary(evaluated.index, evaluated.type, evaluated.text).then(function() {
+    cardToCommentary(evaluated, _state.player, _state.cpu).then(function() {
       _state.player.energy -= evaluated.lostEnergy;
       uiUpdateEnergyBar(_state.player.energy);
       _state.evaluating = false;
@@ -60,14 +61,14 @@ function handleCardClick(index) {
     _state.evaluating = true;
     setTimeout(function() {
       evaluated = evaluateOutcome(_state);
-      cardToCommentary(evaluated.index, evaluated.type, evaluated.text).then(function() {
+      cardToCommentary(evaluated, _state.cpu, _state.player).then(function() {
         uiBlockInput();
         uiChangeFlag(_state.player.flag);
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
       });
-    }, 800);
+    }, 1400);
   }
 }
 
