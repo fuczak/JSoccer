@@ -1,9 +1,14 @@
 var random = require('lodash/number/random');
-var filter = require('lodash/collection/filter');
+var find = require('lodash/collection/find');
 var commentary = require('../db/commentary');
 
-module.exports = function(type, shouldContinue, attackingTeam, defendingTeam) {
-  var compiled = commentary[0].text[0];
+module.exports = function(type, shouldContinue, isSuccess, attackingTeam, defendingTeam) {
+  var commentaryByType = find(commentary, function(e) {
+    return e.type === type;
+  });
 
-  return compiled({ 'aTeam': attackingTeam.name, 'dTeam': defendingTeam.name });
+  console.log(commentaryByType);
+
+  // return compiled({ 'aTeam': attackingTeam.name, 'dTeam': defendingTeam.name });
+  return 'ok';
 };

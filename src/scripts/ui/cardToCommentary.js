@@ -4,7 +4,7 @@ var q = require('q');
 var getCommentaryText = require('./getCommentaryText');
 
 module.exports = function(outcome, attackingTeam, defendingTeam) {
-	var text = getCommentaryText(outcome.type, outcome.shouldContinue, attackingTeam, defendingTeam);
+	var text = getCommentaryText(outcome.type, outcome.shouldContinue, outcome.isSuccess, attackingTeam, defendingTeam);
 	var deferred = q.defer();
 	var a = $('#' + outcome.index).find('.front')[0];
 	var b = document.getElementById('commentary');

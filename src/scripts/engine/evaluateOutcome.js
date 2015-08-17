@@ -10,6 +10,7 @@ module.exports = function(state, index) {
   var picked = outcomes.getOutcome(index);
 
   var shouldContinue = true;
+  var isSuccess = false;
   var isWhistle = false;
 
   switch (picked.outcome.type) {
@@ -54,6 +55,7 @@ module.exports = function(state, index) {
 
   return {
     shouldContinue: shouldContinue,
+    isSuccess: isSuccess,
     isWhistle: isWhistle,
     index: picked.index,
     lostEnergy: random(3, 10),
