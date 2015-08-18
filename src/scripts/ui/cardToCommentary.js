@@ -23,11 +23,12 @@ module.exports = function(outcome, attackingTeam, defendingTeam) {
 		  easing: ramjet.easeInOut
 		});
 		$('#' + outcome.index).find('.front').addClass('ramjet-hidden');
+		$('#' + outcome.index).find('.back').addClass(outcome.type).append('<p class="text-center">' + outcome.type + '</p>');
+		setTimeout(function() {
+			$('#' + outcome.index).find('p').addClass('entered');
+		}, 200);
 	}, 150);
-	$('#' + outcome.index).find('.back').addClass(outcome.type).append('<p class="text-center">' + outcome.type + '</p>');
-	setTimeout(function() {
-		$('#' + outcome.index).find('p').addClass('entered');
-	}, 300);
+	
 
 	return deferred.promise;
 };
