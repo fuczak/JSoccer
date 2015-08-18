@@ -65,16 +65,41 @@ module.exports = [
     }
   },
   {
-    type: 'Offside'
+    type: 'Offside',
+    isFailure: {
+      shouldStop: [
+        template('Offside failure should stop')
+      ]
+    }
   },
   {
-    type: 'Penalty'
+    type: 'Penalty',
+    isSuccess: {
+      shouldStop: [
+        template('Penalty success should stop')
+      ]
+    },
+    isFailure: {
+      shouldStop: [
+        template('Penalty failure should stop')
+      ]
+    }
   },
   {
-    type: 'Red Card'
+    type: 'Red Card',
+    isFailure: {
+      shouldStop: [
+        template('Red card failure should stop')
+      ]
+    }
   },
   {
-    type: 'Whistle'
+    type: 'Whistle',
+    isFailure: {
+      shouldStop: [
+        template('Whistle event')
+      ]
+    }
   }
 ];
 
