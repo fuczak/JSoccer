@@ -27,7 +27,7 @@ function init() {
   uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
     uiGenerateCards(handleCardClick);
-    _state = {  
+    _state = {
       player: player.getTeam(),
       cpu: cpu.getTeam(),
       evaluating: false,
@@ -64,6 +64,7 @@ function handleCardClick(index) {
       cardToCommentary(evaluated, _state.cpu, _state.player).then(function() {
         uiBlockInput();
         uiChangeFlag(_state.player.flag);
+        _state.cpu.energy -= (evaluated.lostEnergy * 0.5);
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();
@@ -81,6 +82,7 @@ function changeMentality(value) {
 }
 
 function handleWhistle() {
+  console.log(_state.player.energy, _state.cpu.energy);
   if (_state.isFirstHalf) {
     uiUpdateEnergyBar(_state.player.energy += random(25, 35));
     uiShowHalftimeSplash().then(function() {
