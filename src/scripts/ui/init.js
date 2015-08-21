@@ -5,6 +5,7 @@ var prepareTeams = require('./prepareTeams');
 var setTeams = require('./setTeams');
 var setTactics = require('./setTactics');
 var cardNumber = require('./cardNumber');
+var scoreboard = require('./scoreboard');
 
 module.exports = function init(makeSub, changeMentality) {
 
@@ -14,6 +15,9 @@ module.exports = function init(makeSub, changeMentality) {
 	prepareTeams();
 	$('#overlay').removeClass('overlay-hide');
 	$('#overlay .flag').on('click', setTeams);
+
+	// Reset scoreboad
+	scoreboard.reset();
 
 	// Tactic setup
 	$('#confirmTactic').on('click', setTactics);

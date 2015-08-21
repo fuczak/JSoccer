@@ -3,24 +3,45 @@ var outcomes = require('../outcomes');
 var player = require('../player');
 var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
+var uiScoreboard = require('../ui/scoreboard');
+var goalEvent = require('./events/goal');
 
 module.exports = function(state, index) {
-
-  // Prepare index to evaluate outcome
-  var picked = outcomes.getOutcome(index);
 
   var shouldContinue;
   var isSuccess;
   var isWhistle;
 
+  var attackingTeam;
+  var defendingTeam;
+  var currentTeamBoard;
+
+  // Prepare index to evaluate outcome
+  var eventOutcome;
+  var picked = outcomes.getOutcome(index);
+
+  if (index) {
+    attackingTeam = state.player;
+    defendingTeam = state.cpu;
+    currentTeamBoard = 'userScore';
+  } else {
+    attackingTeam = state.cpu;
+    defendingTeam = state.player;
+    currentTeamBoard = 'cpuScore';
+  }
+
+  // Get reference to current team's scoreaboard
+
   switch (picked.outcome.type) {
     case 'Goal':
-      isSuccess = true;
-      shouldContinue = false;
+      eventOutcome = goalEvent();
+      isSuccess = eventOutcome.isSuccess;
+      shouldContinue = eventOutcome.shouldContinue;
+      uiScoreboard.goal(currentTeamBoard);
       uiCardNumber.decrement(0);
       break;
     case 'Chance':
-      isSuccess = true
+      isSuccess = true;
       shouldContinue = false;
       uiCardNumber.decrement(1);
       break;

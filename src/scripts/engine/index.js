@@ -27,7 +27,7 @@ function init() {
   uiInit(makeSub, changeMentality).then(function() {
     outcomes.generate();
     uiGenerateCards(handleCardClick);
-    _state = {
+    _state = {  
       player: player.getTeam(),
       cpu: cpu.getTeam(),
       evaluating: false,
