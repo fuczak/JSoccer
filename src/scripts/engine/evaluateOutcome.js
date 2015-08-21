@@ -3,8 +3,7 @@ var outcomes = require('../outcomes');
 var player = require('../player');
 var cpu = require('../cpu');
 var uiCardNumber = require('../ui/cardNumber');
-var uiScoreboard = require('../ui/scoreboard');
-var goalEvent = require('./events/goal');
+var events = require('./events');
 
 module.exports = function(state, index) {
 
@@ -34,16 +33,12 @@ module.exports = function(state, index) {
 
   switch (picked.outcome.type) {
     case 'Goal':
-      eventOutcome = goalEvent();
+      eventOutcome = events.goal(currentTeamBoard);
       isSuccess = eventOutcome.isSuccess;
       shouldContinue = eventOutcome.shouldContinue;
-      uiScoreboard.goal(currentTeamBoard);
-      uiCardNumber.decrement(0);
       break;
     case 'Chance':
-      isSuccess = true;
-      shouldContinue = false;
-      uiCardNumber.decrement(1);
+      eventOutcome = events.chance(currentTeamBoard, attackingTeam, defendingTeam);
       break;
     case 'Pass':
       isSuccess = true;
