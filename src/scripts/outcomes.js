@@ -1,6 +1,6 @@
-var helpers = require('./helpers');
-var uiCardNumber = require('./ui/cardNumber');
+var random = require('lodash/number/random');
 var shuffle = require('lodash/collection/shuffle');
+var uiCardNumber = require('./ui/cardNumber');
 
 var _possibleOutcomes = ['Goal', 'Chance', 'Pass', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
 var _outcomeArray;
@@ -15,20 +15,14 @@ function generate() {
   // Prepare array for ui painting
   var outcomesForUi = [0, 0, 0, 0, 0];
   // First, add between one and two Whistle events
-  var whistleEvents = helpers.random(1, 2);
+  var whistleEvents = random(1, 2);
   for (var i = 0; i < whistleEvents; i++) {
     _outcomeArray.push({type: 'Whistle', picked: false});
     outcomesForUi[4] += 1;
   }
-  // Then, add between 6 and 12 Pass events
-  // var passEvents = helpers.random(6, 12)
-  // for (var j = 0; j < passEvents; j++) {
-  //   _outcomeArray.push({type: 'Pass', picked: false});
-  //   outcomesForUi[2] += 1;
-  // }
   // Fill the rest of the array with random events
   for (var k = 0; k < 24 - whistleEvents; k++) {
-    var index = helpers.random(0, 6);
+    var index = random(0, 6);
     _outcomeArray.push({type: _possibleOutcomes[index], picked: false});
     index < 4 ? outcomesForUi[index] += 1 : outcomesForUi[4] += 1;
   }
@@ -40,7 +34,7 @@ function generate() {
 function getOutcome(index) {
   // If index is undefined get the random outcome for cpu
   if (index === undefined) {
-    var pickedIndex = helpers.random(0, 23);
+    var pickedIndex = random(0, 23);
     if (_outcomeArray[pickedIndex].picked) {
       return getOutcome();
     } else {

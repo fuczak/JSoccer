@@ -1,4 +1,4 @@
-var helpers = require('./helpers');
+var config = require('./config');
 
 var _team;
 var _formations = ['532', '442', '433', '352', '343'];
@@ -22,9 +22,9 @@ function getTeam() {
 
 function setTactics(formation) {
   var pickedFormation = _formations[formation];
-  _team.skill.defense *= +helpers.getTacticCoef(pickedFormation[0]);
-  _team.skill.midfield *= +helpers.getTacticCoef(pickedFormation[1]);
-  _team.skill.attack *= +helpers.getTacticCoef(pickedFormation[2]);
+  _team.skill.defense *= +config.TACTIC_COEF(pickedFormation[0]);
+  _team.skill.midfield *= +config.TACTIC_COEF(pickedFormation[1]);
+  _team.skill.attack *= +config.TACTIC_COEF(pickedFormation[2]);
   setMentality(1);
 }
 
