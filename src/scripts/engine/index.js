@@ -1,7 +1,10 @@
 var random = require('lodash/number/random');
 var evaluateOutcome = require('./evaluateOutcome');
-var uiInit = require('../ui/init');
 var outcomes = require('../outcomes');
+var player = require('../player');
+var cpu = require('../cpu');
+var config = require('../config');
+var uiInit = require('../ui/init');
 var uiGenerateCards = require('../ui/generateCards');
 var uiMakeCommentary = require('../ui/makeCommentary');
 var uiShowHalftimeSplash = require('../ui/showHalftimeSplash');
@@ -10,9 +13,6 @@ var uiUpdateEnergyBar = require('../ui/updateEnergyBar');
 var uiChangeFlag = require('../ui/changeFlag');
 var cardToCommentary = require('../ui/cardToCommentary');
 var uiBlockInput = require('../ui/blockInput');
-var player = require('../player');
-var cpu = require('../cpu');
-
 
 var _state = {};
 
@@ -64,7 +64,7 @@ function handleCardClick(index) {
       cardToCommentary(evaluated, _state.cpu, _state.player).then(function() {
         uiBlockInput();
         uiChangeFlag(_state.player.flag);
-        _state.cpu.energy -= (evaluated.lostEnergy * 0.5);
+        _state.cpu.energy -= (evaluated.lostEnergy * config.CPU_LOST_ENERGY);
         _state.evaluating = false;
         if (evaluated.isWhistle) return handleWhistle();
         if (evaluated.shouldContinue) handleCardClick();

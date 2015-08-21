@@ -1,9 +1,5 @@
 var config = {
-  TACTIC_COEF: TACTIC_COEF
+  CPU_LOST_ENERGY: 0.5
 };
-
-function TACTIC_COEF(input) {
-  return 1 - 1/input;
-}
 
 module.exports = config;

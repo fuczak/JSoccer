@@ -1,5 +1,4 @@
 var random = require('lodash/number/random');
-var config = require('./config');
 
 var _team;
 
@@ -20,9 +19,6 @@ function getTeam() {
 
 function setTactics(formation) {
   // Maybe pick a best counter - formation?
-  _team.skill.defense *= config.TACTIC_COEF(random(3, 5));
-  _team.skill.midfield *= config.TACTIC_COEF(random(3, 5));
-  _team.skill.attack *= config.TACTIC_COEF(random(3, 5));
 }
 
 module.exports = cpu;
