@@ -29,13 +29,9 @@ module.exports = function(state, index) {
     currentTeamBoard = 'cpuScore';
   }
 
-  // Get reference to current team's scoreaboard
-
   switch (picked.outcome.type) {
     case 'Goal':
       eventOutcome = events.goal(currentTeamBoard);
-      isSuccess = eventOutcome.isSuccess;
-      shouldContinue = eventOutcome.shouldContinue;
       break;
     case 'Chance':
       eventOutcome = events.chance(currentTeamBoard, attackingTeam, defendingTeam);
@@ -77,10 +73,11 @@ module.exports = function(state, index) {
       uiCardNumber.decrement(4);
       break;
   }
-
+// I could simply assign isSuccess and shouldContinue to return values of events.outcome module
+// so I won't have to declate isSuccess and shouldContinue variables
   return {
-    shouldContinue: shouldContinue,
-    isSuccess: isSuccess,
+    shouldContinue: eventOutcome && eventOutcome.shouldContinue || shouldContinue,
+    isSuccess: eventOutcome && eventOutcome.isSuccess || isSuccess,
     isWhistle: isWhistle,
     index: picked.index,
     lostEnergy: random(3, 10),

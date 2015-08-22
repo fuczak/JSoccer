@@ -4,9 +4,9 @@ module.exports = [
     name: 'Poland',
     flag: 'Poland',
     skill: {
-      attack: 100,
-      midfield: 100,
-      defense: 100
+      attack: 50,
+      midfield: 50,
+      defense: 50
     }
   },
   {

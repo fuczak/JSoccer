@@ -82,7 +82,6 @@ function changeMentality(value) {
 }
 
 function handleWhistle() {
-  console.log(_state.player.energy, _state.cpu.energy);
   if (_state.isFirstHalf) {
     uiUpdateEnergyBar(_state.player.energy += random(25, 35));
     uiShowHalftimeSplash().then(function() {

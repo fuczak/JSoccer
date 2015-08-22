@@ -20,8 +20,14 @@ function generate() {
     _outcomeArray.push({type: 'Whistle', picked: false});
     outcomesForUi[4] += 1;
   }
+  // Add a specific type of outcome for debug reasons
+  var chanceEvents = 10;
+  for (var j = 0; j < chanceEvents; j++) {
+    _outcomeArray.push({type: 'Chance', picked: false});
+    outcomesForUi[1] += 1;
+  }
   // Fill the rest of the array with random events
-  for (var k = 0; k < 24 - whistleEvents; k++) {
+  for (var k = 0; k < 24 - whistleEvents - chanceEvents; k++) {
     var index = random(0, 6);
     _outcomeArray.push({type: _possibleOutcomes[index], picked: false});
     index < 4 ? outcomesForUi[index] += 1 : outcomesForUi[4] += 1;
