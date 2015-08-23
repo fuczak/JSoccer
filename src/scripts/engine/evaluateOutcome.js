@@ -10,6 +10,7 @@ module.exports = function(state, index) {
   var shouldContinue;
   var isSuccess;
   var isWhistle;
+  var lostEnergy = random(3, 10);
 
   var attackingTeam;
   var defendingTeam;
@@ -45,8 +46,8 @@ module.exports = function(state, index) {
       uiCardNumber.decrement(3);
       break;
     case 'Injury':
-      isSuccess = false;
-      shouldContinue = false;
+      eventOutcome = events.injury(attackingTeam, defendingTeam);
+      if (!eventOutcome.isSuccess) lostEnergy *= 3;
       uiCardNumber.decrement(4);
       break;
     case 'Offside':
@@ -78,7 +79,7 @@ module.exports = function(state, index) {
     isSuccess: eventOutcome && eventOutcome.isSuccess || isSuccess,
     isWhistle: isWhistle,
     index: picked.index,
-    lostEnergy: random(3, 10),
+    lostEnergy: lostEnergy,
     type: picked.outcome.type
   };
 };
