@@ -41,8 +41,7 @@ module.exports = function(state, index) {
       uiCardNumber.decrement(2);
       break;
     case 'Tackle':
-      isSuccess = false;
-      shouldContinue = false;
+      eventOutcome = events.tackle(attackingTeam, defendingTeam);
       uiCardNumber.decrement(3);
       break;
     case 'Injury':

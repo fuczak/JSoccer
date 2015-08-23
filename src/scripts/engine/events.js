@@ -8,7 +8,8 @@ var ENERGY_COEF = 0.01;
 var events = {
   goal: goal,
   chance: chance,
-  pass: pass
+  pass: pass,
+  tackle: tackle
 };
 
 function goal(currentTeamBoard) {
@@ -41,8 +42,22 @@ function pass(attackingTeam, defendingTeam) {
   if (attackingTeam.mentality === 1) aSkill *= MENTALITY_COEF;
   if (defendingTeam.mentality === 1) dSkill *= MENTALITY_COEF;
   var isSuccess = random(0, aSkill + dSkill) <= aSkill;
-  shouldContinue = isSuccess;
+  var shouldContinue = isSuccess;
   uiCardNumber.decrement(2);
+  return {
+    isSuccess: isSuccess,
+    shouldContinue: shouldContinue
+  };
+}
+
+function tackle(attackingTeam, defendingTeam) {
+  var aSkill = attackingTeam.skill.midfield * attackingTeam.energy * ENERGY_COEF;
+  var dSkill = (defendingTeam.skill.midfield + defendingTeam.skill.defense) * defendingTeam.energy * ENERGY_COEF;
+  if (attackingTeam.mentality === 1) aSkill *= MENTALITY_COEF;
+  var isSuccess = random(0, aSkill + dSkill) <= aSkill;
+  var shouldContinue = isSuccess;
+  console.log(aSkill, dSkill);
+  uiCardNumber.decrement(3);
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue

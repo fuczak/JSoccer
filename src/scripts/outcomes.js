@@ -23,8 +23,8 @@ function generate() {
   // Add a specific type of outcome for debug reasons
   var debugEvents = 10;
   for (var j = 0; j < debugEvents; j++) {
-    _outcomeArray.push({type: 'Pass', picked: false});
-    outcomesForUi[2] += 1;
+    _outcomeArray.push({type: 'Tackle', picked: false});
+    outcomesForUi[3] += 1;
   }
   // Fill the rest of the array with random events
   for (var k = 0; k < 24 - whistleEvents - debugEvents; k++) {
