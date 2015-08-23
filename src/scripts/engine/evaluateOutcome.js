@@ -39,21 +39,16 @@ module.exports = function(state, index) {
       break;
     case 'Pass':
       eventOutcome = events.pass(attackingTeam, defendingTeam);
-      uiCardNumber.decrement(2);
       break;
     case 'Tackle':
       eventOutcome = events.tackle(attackingTeam, defendingTeam);
-      uiCardNumber.decrement(3);
       break;
     case 'Injury':
       eventOutcome = events.injury(attackingTeam, defendingTeam);
-      if (!eventOutcome.isSuccess) lostEnergy *= 3;
-      uiCardNumber.decrement(4);
+      lostEnergy *= 3;
       break;
     case 'Offside':
-      isSuccess = false;
-      shouldContinue = false;
-      uiCardNumber.decrement(4);
+      eventOutcome = events.offside(attackingTeam, defendingTeam);
       break;
     case 'Penalty':
       isSuccess = true;

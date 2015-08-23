@@ -10,7 +10,8 @@ var events = {
   chance: chance,
   pass: pass,
   tackle: tackle,
-  injury: injury
+  injury: injury,
+  offside: offside
 };
 
 function goal(currentTeamBoard) {
@@ -77,6 +78,14 @@ function injury(attackingTeam, defendingTeam) {
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue
+  };
+}
+
+function offside(attackingTeam, defendingTeam) {
+  uiCardNumber.decrement(4);
+  return {
+    isSuccess: false,
+    shouldContinue: false
   };
 }
 
