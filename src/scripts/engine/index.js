@@ -82,9 +82,11 @@ function changeMentality(value) {
 }
 
 function handleWhistle() {
+  uiBlockInput();
   if (_state.isFirstHalf) {
     uiUpdateEnergyBar(_state.player.energy += random(25, 35));
     uiShowHalftimeSplash().then(function() {
+      uiBlockInput();
       uiChangeFlag(_state.cpu.flag);
       _state.isFirstHalf = false;
       uiGenerateCards(handleCardClick);
@@ -92,9 +94,12 @@ function handleWhistle() {
       handleCardClick();
     });
   } else {
-    uiShowFullTimeSplash().then(function() {
-      init();
-    });
+    setTimeout(function() {
+      uiShowFullTimeSplash().then(function() {
+        uiBlockInput();
+        init();
+      });
+    }, 1400);
   }
 }
 

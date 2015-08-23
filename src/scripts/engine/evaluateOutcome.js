@@ -7,8 +7,6 @@ var events = require('./events');
 
 module.exports = function(state, index) {
 
-  var shouldContinue;
-  var isSuccess;
   var isWhistle;
   var lostEnergy = random(3, 10);
 
@@ -45,33 +43,28 @@ module.exports = function(state, index) {
       break;
     case 'Injury':
       eventOutcome = events.injury(attackingTeam, defendingTeam);
-      lostEnergy *= 3;
+      lostEnergy *= 2;
       break;
     case 'Offside':
       eventOutcome = events.offside(attackingTeam, defendingTeam);
       break;
     case 'Penalty':
-      isSuccess = true;
-      shouldContinue = false;
-      uiCardNumber.decrement(4);
+      eventOutcome = events.penalty(currentTeamBoard, attackingTeam, defendingTeam);
       break;
     case 'Red Card':
-      isSuccess = false;
-      shouldContinue = false;
-      uiCardNumber.decrement(4);
+      eventOutcome = events.redCard(attackingTeam, defendingTeam);
+      lostEnergy *= 3;
       break;
     case 'Whistle':
-      isSuccess = false;
-      shouldContinue = false;
+      eventOutcome = events.whistle();
       isWhistle = true;
-      uiCardNumber.decrement(4);
       break;
   }
 // I could simply assign isSuccess and shouldContinue to return values of events.outcome module
 // so I won't have to declate isSuccess and shouldContinue variables
   return {
-    shouldContinue: eventOutcome && eventOutcome.shouldContinue || shouldContinue,
-    isSuccess: eventOutcome && eventOutcome.isSuccess || isSuccess,
+    shouldContinue: eventOutcome && eventOutcome.shouldContinue,
+    isSuccess: eventOutcome && eventOutcome.isSuccess,
     isWhistle: isWhistle,
     index: picked.index,
     lostEnergy: lostEnergy,

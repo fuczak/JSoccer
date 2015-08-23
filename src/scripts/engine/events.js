@@ -11,7 +11,10 @@ var events = {
   pass: pass,
   tackle: tackle,
   injury: injury,
-  offside: offside
+  offside: offside,
+  penalty: penalty,
+  redCard: redCard,
+  whistle: whistle
 };
 
 function goal(currentTeamBoard) {
@@ -82,6 +85,34 @@ function injury(attackingTeam, defendingTeam) {
 }
 
 function offside(attackingTeam, defendingTeam) {
+  uiCardNumber.decrement(4);
+  return {
+    isSuccess: false,
+    shouldContinue: false
+  };
+}
+
+function penalty(currentTeamBoard, attackingTeam, defendingTeam) {
+  var aSkill = attackingTeam.skill.attack;
+  var dSkill = defendingTeam.skill.defense;
+  var isSuccess = _evaluateSuccess(aSkill, dSkill);
+  if (isSuccess) uiScoreboard.goal(currentTeamBoard);
+  uiCardNumber.decrement(4);
+  return {
+    isSuccess: isSuccess,
+    shouldContinue: false
+  };
+}
+
+function redCard(attackingTeam, defendingTeam) {
+  uiCardNumber.decrement(4);
+  return {
+    isSuccess: false,
+    shouldContinue: false
+  };
+}
+
+function whistle() {
   uiCardNumber.decrement(4);
   return {
     isSuccess: false,
