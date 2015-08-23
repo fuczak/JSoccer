@@ -37,8 +37,7 @@ module.exports = function(state, index) {
       eventOutcome = events.chance(currentTeamBoard, attackingTeam, defendingTeam);
       break;
     case 'Pass':
-      isSuccess = true;
-      shouldContinue = true;
+      eventOutcome = events.pass(attackingTeam, defendingTeam);
       uiCardNumber.decrement(2);
       break;
     case 'Tackle':
