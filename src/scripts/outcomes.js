@@ -1,5 +1,7 @@
 var random = require('lodash/number/random');
 var shuffle = require('lodash/collection/shuffle');
+var some = require('lodash/collection/some');
+var filter = require('lodash/collection/filter');
 var uiCardNumber = require('./ui/cardNumber');
 
 var _possibleOutcomes = ['Goal', 'Chance', 'Pass', 'Tackle', 'Injury', 'Offside', 'Penalty', 'Red Card']; // Plus 'Whistle'
@@ -7,7 +9,9 @@ var _outcomeArray;
 
 var outcomes = {
   generate: generate,
-  getOutcome: getOutcome
+  getOutcome: getOutcome,
+  defensiveSubstitution: defensiveSubstitution,
+  offensiveSubstitution: offensiveSubstitution
 };
 
 function generate() {
@@ -50,6 +54,42 @@ function getOutcome(index) {
   }
   _outcomeArray[index].picked = true;
   return {outcome: _outcomeArray[index], index: index};
+}
+
+function _findSatisfyingIndex(type) {
+  var indexes = [];
+  _outcomeArray.forEach(function(e, i) {
+    if (e.type === type && e.picked === false) indexes.push(i);
+  });
+  return indexes[random(0, indexes.length - 1)];
+}
+
+function defensiveSubstitution() {
+  var beneficialOutcomes = [{type: 'Whistle', uiNumber: 4}, {type: 'Tackle', uiNumber: 3}];
+  var outcomeToBeAdded = beneficialOutcomes[random(0, beneficialOutcomes.length - 1)];
+  if (some(_outcomeArray, {type: 'Goal', picked: false})) {
+    _outcomeArray[_findSatisfyingIndex('Goal')] = {type: outcomeToBeAdded.type, picked: false};
+    uiCardNumber.modify(0, 'decrement');
+    uiCardNumber.modify(outcomeToBeAdded.uiNumber, 'increment');
+  } else if (some(_outcomeArray, {type: 'Chance', picked: false})) {
+    _outcomeArray[_findSatisfyingIndex('Chance')] = {type: outcomeToBeAdded.type, picked: false};
+    uiCardNumber.modify(1, 'decrement');
+    uiCardNumber.modify(outcomeToBeAdded.uiNumber, 'increment');
+  }
+}
+
+function offensiveSubstitution() {
+  var beneficialOutcomes = [{type: 'Goal', uiNumber: 0}, {type: 'Chance', uiNumber: 1}];
+  var outcomeToBeAdded = beneficialOutcomes[random(0, beneficialOutcomes.length - 1)];
+  if (filter(_outcomeArray, {type: 'Whistle', picked: false}).length > 1) {
+    _outcomeArray[_findSatisfyingIndex('Whistle')] = {type: outcomeToBeAdded.type, picked: false};
+    uiCardNumber.modify(4, 'decrement');
+    uiCardNumber.modify(outcomeToBeAdded.uiNumber, 'increment');
+  } else if (some(_outcomeArray, {type: 'Tackle', picked: false })) {
+    _outcomeArray[_findSatisfyingIndex('Tackle')] = {type: outcomeToBeAdded.type, picked: false};
+    uiCardNumber.modify(3, 'decrement');
+    uiCardNumber.modify(outcomeToBeAdded.uiNumber, 'increment');
+  }
 }
 
 module.exports = outcomes;

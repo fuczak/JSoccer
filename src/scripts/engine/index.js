@@ -75,6 +75,14 @@ function handleCardClick(index) {
 
 function makeSub() {
   uiUpdateEnergyBar(_state.player.energy += random(8, 15));
+  switch(_state.player.mentality) {
+    case 0:
+      outcomes.defensiveSubstitution();
+      break;
+    case 2:
+      outcomes.offensiveSubstitution();
+      break;
+  }
 }
 
 function changeMentality(value) {
