@@ -10,7 +10,7 @@ var numbers = [
 
 var cardNumber = {
   set: set,
-  decrement: decrement
+  modify: modify
 };
 
 function set(array) {
@@ -21,14 +21,17 @@ function set(array) {
   }
 }
 
-function decrement(type) {
+function modify(type, action) {
   var selectedCard = numbers[type];
   selectedCard.closest('.remaining').addClass('remaining-selected');
-  selectedCard.text(selectedCard.text() - 1);
+  if (action === 'decrement') {
+    selectedCard.text(+selectedCard.text() - 1);
+  } else if (action === 'increment') {
+    selectedCard.text(+selectedCard.text() + 1);
+  }
   setTimeout(function() {
     selectedCard.closest('.remaining').removeClass('remaining-selected');
   }, 200);
-  
 }
 
 module.exports = cardNumber;

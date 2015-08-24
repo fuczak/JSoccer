@@ -19,7 +19,7 @@ var events = {
 
 function goal(currentTeamBoard) {
   uiScoreboard.goal(currentTeamBoard);
-  uiCardNumber.decrement(0);
+  uiCardNumber.modify(0, 'decrement');
   return {
     isSuccess: true,
     shouldContinue: false
@@ -38,7 +38,7 @@ function chance(currentTeamBoard, attackingTeam, defendingTeam) {
   var isSuccess = _evaluateSuccess(aSkill, dSkill);
   var shouldContinue = isSuccess ? false : _evaluateSuccess(aSkill, dSkill);
   if (isSuccess) uiScoreboard.goal(currentTeamBoard);
-  uiCardNumber.decrement(1);
+  uiCardNumber.modify(1, 'decrement');
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue
@@ -52,7 +52,7 @@ function pass(attackingTeam, defendingTeam) {
   if (defendingTeam.mentality === 1) dSkill *= MENTALITY_COEF;
   var isSuccess = _evaluateSuccess(aSkill, dSkill);
   var shouldContinue = isSuccess;
-  uiCardNumber.decrement(2);
+  uiCardNumber.modify(2, 'decrement');
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue
@@ -65,7 +65,7 @@ function tackle(attackingTeam, defendingTeam) {
   if (attackingTeam.mentality === 1) aSkill *= MENTALITY_COEF;
   var isSuccess = _evaluateSuccess(aSkill, dSkill);
   var shouldContinue = isSuccess;
-  uiCardNumber.decrement(3);
+  uiCardNumber.modify(3, 'decrement');
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue
@@ -77,7 +77,7 @@ function injury(attackingTeam, defendingTeam) {
   var dSkill = defendingTeam.energy * ENERGY_COEF;
   var isSuccess = _evaluateSuccess(aSkill, dSkill);
   var shouldContinue = isSuccess;
-  uiCardNumber.decrement(4);
+  uiCardNumber.modify(4, 'decrement');
   return {
     isSuccess: isSuccess,
     shouldContinue: shouldContinue
@@ -85,7 +85,7 @@ function injury(attackingTeam, defendingTeam) {
 }
 
 function offside(attackingTeam, defendingTeam) {
-  uiCardNumber.decrement(4);
+  uiCardNumber.modify(4, 'decrement');
   return {
     isSuccess: false,
     shouldContinue: false
@@ -97,7 +97,7 @@ function penalty(currentTeamBoard, attackingTeam, defendingTeam) {
   var dSkill = defendingTeam.skill.defense;
   var isSuccess = _evaluateSuccess(aSkill, dSkill);
   if (isSuccess) uiScoreboard.goal(currentTeamBoard);
-  uiCardNumber.decrement(4);
+  uiCardNumber.modify(4, 'decrement');
   return {
     isSuccess: isSuccess,
     shouldContinue: false
@@ -105,7 +105,7 @@ function penalty(currentTeamBoard, attackingTeam, defendingTeam) {
 }
 
 function redCard(attackingTeam, defendingTeam) {
-  uiCardNumber.decrement(4);
+  uiCardNumber.modify(4, 'decrement');
   return {
     isSuccess: false,
     shouldContinue: false
@@ -113,7 +113,7 @@ function redCard(attackingTeam, defendingTeam) {
 }
 
 function whistle() {
-  uiCardNumber.decrement(4);
+  uiCardNumber.modify(4, 'decrement');
   return {
     isSuccess: false,
     shouldContinue: false
