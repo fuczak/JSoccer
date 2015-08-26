@@ -45,7 +45,7 @@
     <section class="main-splash main-splash-hide" id="fulltime">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center fulltime" id="fulltime">
+          <div class="col-md-12 text-center fulltime">
             <h1>Well that's about it!</h1>
             <br>
             <p>I hope you enjoyed the playthrough.</p>
@@ -54,6 +54,24 @@
             <hr>
             <p>If you did enjoy the game, please spread the word!</p>
             <br>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-splash main-splash-hide" id="tacticOverlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center" style="padding: 20px">
+            <!--  Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-splash main-splash-hide" id="remainingOverlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center" style="padding: 20px">
+            <!--  Populated by JS -->
           </div>
         </div>
       </div>
@@ -70,7 +88,7 @@
     <section class="pitch">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2 sidebar">
+          <div class="col-md-2 sidebar" id="tacticSidebar">
             <div class="" id="sidebarBlock"></div>
             <p>Tactics</p>
             <hr>
@@ -132,7 +150,7 @@
             <!-- Populated by JS -->
             </div>
           </div>
-          <div class="col-md-2 sidebar">
+          <div class="col-md-2 sidebar" id="remainingSidebar">
             <p>Remaining cards</p>
             <hr>
             <div class="remaining"><h4><span class="label label-success" id="goalNumber">4</span> Goal</h4></div>
@@ -143,6 +161,10 @@
           </div>
         </div>
       </div>
+    </section>
+    <section class="footer">
+      <div class="btn btn-tactic btn-danger tacticShowButton" id="tacticShowButton">Tactics</div>
+      <div class="btn btn-tactic btn-danger remainingShowButton" id="remainingShowButton">Remaining Cards</div>
     </section>
     <!-- build:js scripts/bundle.js-->
     <script src="scripts/bundle.js"></script>

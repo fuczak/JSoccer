@@ -34,6 +34,14 @@ module.exports = function init(makeSub, changeMentality) {
 		changeMentality(+$(this).find('input').val());
 	});
 
+	// Click handlers for tactic and remaining cards overlays
+	$('#tacticShowButton').on('click', function() {
+		$('#tacticOverlay').toggleClass('main-splash-hide');
+	});
+	$('#remainingShowButton').on('click', function() {
+		$('#remainingOverlay').toggleClass('main-splash-hide');
+	});
+
 	// Sidebar remaining setup
 	cardNumber.set([0, 0, 0, 0, 0]);
 
