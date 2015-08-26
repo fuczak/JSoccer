@@ -35,6 +35,8 @@ module.exports = function init(makeSub, changeMentality) {
 	});
 
 	// Click handlers for tactic and remaining cards overlays
+	$('#tacticShowButton').off('click');
+	$('#remainingShowButton').off('click');
 	$('#tacticShowButton').on('click', function() {
 		$('#tacticOverlay').toggleClass('main-splash-hide');
 	});
