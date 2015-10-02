@@ -319,7 +319,7 @@ header {
 	will-change: transform;
 	@include box_shadow;
 	background-color: #fff;
-	min-height: 120px;
+	min-height: 125px;
 	text-align: center;
 	transition: 600ms transform ease-in-out, 400ms opacity ease-out;
 	position: relative;
