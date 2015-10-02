@@ -74,7 +74,7 @@ function handleCardClick(index) {
 }
 
 function makeSub() {
-  uiUpdateEnergyBar(_state.player.energy += random(8, 15));
+  restoreEnergy(8, 15);
   switch(_state.player.mentality) {
     case 0:
       outcomes.defensiveSubstitution();
@@ -89,10 +89,17 @@ function changeMentality(value) {
   _state.player.mentality = value;
 }
 
+function restoreEnergy(lowValue, highValue) {
+  console.log(_state.player.energy);
+  uiUpdateEnergyBar(_state.player.energy += random(lowValue, highValue));
+  if (_state.player.energy > 100) _state.player.energy = 100;
+  console.log(_state.player.energy);
+}
+
 function handleWhistle() {
   uiBlockInput();
   if (_state.isFirstHalf) {
-    uiUpdateEnergyBar(_state.player.energy += random(25, 35));
+    restoreEnergy(25, 35);
     uiShowHalftimeSplash().then(function() {
       uiBlockInput();
       uiChangeFlag(_state.cpu.flag);
