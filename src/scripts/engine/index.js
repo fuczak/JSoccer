@@ -90,10 +90,8 @@ function changeMentality(value) {
 }
 
 function restoreEnergy(lowValue, highValue) {
-  console.log(_state.player.energy);
   uiUpdateEnergyBar(_state.player.energy += random(lowValue, highValue));
   if (_state.player.energy > 100) _state.player.energy = 100;
-  console.log(_state.player.energy);
 }
 
 function handleWhistle() {

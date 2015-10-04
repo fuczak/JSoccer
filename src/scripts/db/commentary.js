@@ -2,102 +2,106 @@ var template = require('lodash/string/template');
 
 module.exports = [
   {
-    type: 'Goal',
+    type: "Goal",
     isSuccess: {
       shouldStop: [
-        template('What a beautiful goal by <%= aTeam %>! <%= dTeam %> will now resume the match.')
+        template("What a beautiful goal by <%= aTeam %>! <%= dTeam %> will now resume the match."),
+        template("It's there, <%= aTeam %> scores! <%= dTeam %> goalkeeper left with no chance!"),
+        template("Scored by <%= aTeam %>! Clinical finishing! <%= dTeam %> kicks off.")
       ]
     }
   },
   {
-    type: 'Chance',
+    type: "Chance",
     isSuccess: {
       shouldStop: [
-        template('Chance turned into a goal. Great play by <%= aTeam %>. <%= dTeam %> will restart the match.')
+        template("Chance turned into a goal. Great play by <%= aTeam %>. <%= dTeam %> will restart the match.")
       ]
     },
     isFailure: {
       shouldStop: [
-        template('<%= aTeam %> wasted a great chance. The ball is now in <%= dTeam %>\'s posession')
+        template("<%= aTeam %> wasted a great chance. The ball is now in <%= dTeam %>'s posession"),
+        template("An opportunity for <%= aTeam %> to go in front is blown. Terrible finish! <$= dTeam %> restarts.")
       ],
       shouldContinue: [
-        template('<%= aTeam %> hits the post! But they get the ball back, what a chance!')
+        template("<%= aTeam %> hits the post! But they get the ball back, what a chance!"),
+        template("Oh dear Oh dear! What a miss... But <%= aTeam %> gets to the loose ball first!")
       ]
     }
   },
   {
-    type: 'Pass',
+    type: "Pass",
     isSuccess: {
       shouldContinue: [
-        template('A very precise pass by <%= aTeam %>, great build-up')
+        template("A very precise pass by <%= aTeam %>, great build-up")
       ]
     },
     isFailure: {
       shouldStop: [
-        template('<%= aTeam %>\'s pass intercepted by <%= dTeam %>.')
+        template("<%= aTeam %>'s pass intercepted by <%= dTeam %>.")
       ]
     }
   },
   {
-    type: 'Tackle',
+    type: "Tackle",
     isSuccess: {
       shouldContinue: [
-        template('Foul by <%= dTeam %>. <%= aTeam %> gets a free kick.')
+        template("Foul by <%= dTeam %>. <%= aTeam %> gets a free kick.")
       ]
     },
     isFailure: {
       shouldStop: [
-        template('Great tackle by <%= dTeam %>, they get the ball back.')
+        template("Great tackle by <%= dTeam %>, they get the ball back.")
       ]
     }
   },
   {
-    type: 'Injury',
+    type: "Injury",
     isSuccess: {
       shouldContinue: [
-        template('Injury success should continue')
+        template("Injury success should continue")
       ]
     },
     isFailure: {
       shouldStop: [
-        template('Injury failure should stop')
+        template("Injury failure should stop")
       ]
     }
   },
   {
-    type: 'Offside',
+    type: "Offside",
     isFailure: {
       shouldStop: [
-        template('Offside failure should stop')
+        template("Offside failure should stop")
       ]
     }
   },
   {
-    type: 'Penalty',
+    type: "Penalty",
     isSuccess: {
       shouldStop: [
-        template('Penalty success should stop')
+        template("Penalty success should stop")
       ]
     },
     isFailure: {
       shouldStop: [
-        template('Penalty failure should stop')
+        template("Penalty failure should stop")
       ]
     }
   },
   {
-    type: 'Red Card',
+    type: "Red Card",
     isFailure: {
       shouldStop: [
-        template('Red card failure should stop')
+        template("Red card failure should stop")
       ]
     }
   },
   {
-    type: 'Whistle',
+    type: "Whistle",
     isFailure: {
       shouldStop: [
-        template('Whistle event')
+        template("Whistle event")
       ]
     }
   }
