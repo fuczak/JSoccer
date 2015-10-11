@@ -15,13 +15,14 @@ module.exports = [
     type: "Chance",
     isSuccess: {
       shouldStop: [
-        template("Chance turned into a goal. Great play by <%= aTeam %>. <%= dTeam %> will restart the match.")
+        template("A chance turned into a goal. Great play by <%= aTeam %>. <%= dTeam %> will restart the match."),
+        template("Superb finish by <%= aTeam %>. The <%= dTeam %> defenders were caught at sixes and sevens!")
       ]
     },
     isFailure: {
       shouldStop: [
         template("<%= aTeam %> wasted a great chance. The ball is now in <%= dTeam %>'s posession"),
-        template("An opportunity for <%= aTeam %> to go in front is blown. Terrible finish! <$= dTeam %> restarts.")
+        template("An opportunity for <%= aTeam %> to go in front is blown. Terrible finish! <%= dTeam %> restarts.")
       ],
       shouldContinue: [
         template("<%= aTeam %> hits the post! But they get the ball back, what a chance!"),
@@ -33,12 +34,26 @@ module.exports = [
     type: "Pass",
     isSuccess: {
       shouldContinue: [
-        template("A very precise pass by <%= aTeam %>, great build-up")
+        template("A very precise pass by <%= aTeam %>, great build-up"),
+        template("<%= aTeam %> retains possession with a low pass down the left flank."),
+        template("<%= aTeam %> retains possession with a low pass down the right flank."),
+        template("<%= aTeam %> plays the ball down the right side."),
+        template("<%= aTeam %> plays the ball down the left side."),
+        template("<%= aTeam %> moves the ball forward."),
+        template("<%= aTeam %> hits the ball forward."),
+        template("<%= aTeam %> plays the ball square looking for the opening."),
+        template("<%= aTeam %> builds down the left with an excellent pass."),
+        template("<%= aTeam %> builds down the right with an excellent pass.")
+
       ]
     },
     isFailure: {
       shouldStop: [
-        template("<%= aTeam %>'s pass intercepted by <%= dTeam %>.")
+        template("<%= aTeam %>'s pass intercepted by <%= dTeam %>."),
+        template("A very poor pass by <%= aTeam %>. <%= dTeam %> intercepts."),
+        template("Terrible pass makes it easy for <%= dTeam %> to take over the ball."),
+        template("<%= aTeam %> tries to play a long ball forward but it's intercepted!"),
+        template("<%= aTeam %> loses the ball. Chance for a counter-attack for <%= dTeam %>")
       ]
     }
   },
@@ -51,7 +66,8 @@ module.exports = [
     },
     isFailure: {
       shouldStop: [
-        template("Great tackle by <%= dTeam %>, they get the ball back.")
+        template("Great tackle by <%= dTeam %>, they get the ball back."),
+        template("Solid tackle from <%= dTeam %>, easily dispossessing <%= aTeam %>.")
       ]
     }
   },
